@@ -1,0 +1,60 @@
+#chart {
+
+}
+
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2px;
+}
+
+.axisSteelBlue text{
+    fill: steelblue;
+}
+
+.axisRed text{
+    fill: red;
+}
+
+.axisPurple text {
+    fill: purple;
+}
+
+/* crosshair*/
+.line .crosshair {
+    fill: none;
+    stroke-width: 1px;
+}
+.line #crosshairX {
+    stroke: red;
+}
+.line #crosshairY {
+    stroke: blue;
+}
+.overlay {
+    fill: none;
+    stroke: black;
+    pointer-events: all;
+    stroke-width: 2px;
+}
+svg {
+    shape-rendering: crispEdges;
+}
+
+/* basic positioning */
+.legend { list-style: none; }
+.legend li { float: left; margin-right: 10px; }
+.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px;}
+/* your colors */
+.legend .Temp1 { background-color: #FF1F00; }
+.legend .Temp2 { background-color: #FF4F00; }
+.legend .Temp3 { background-color: #FF7F00; }
+.legend .Temp4 { background-color: #FFAF00; }
+.legend .Temp5 { background-color: #FFEF00; }
+
+.legend .EHumi { background-color: steelblue; }
+.legend .Sumi { background-color: black; }
+.legend .Light { background-color: purple; }
+
+
