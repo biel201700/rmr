@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RMR List</title>
+</head>
+<body>
+<h1>RMR List</h1>
+<h5>id를 클릭하면 상세페이지로 이동합니다.</h5>
+
+<ul id="rmr_list">
+
+
+
+
+</ul>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $.ajax({
+            url: "/select",
+            type: "post",
+            contentType: "application/json",
+            success: function (data) {
+                console.log(data);
+                for(let i=0; i<data.length; i++){
+                    $('#rmr_list').append(`<li><a data-id = ${data[i].id} />${data[i].id}</li>`);
+                }
+            },
+            error: function (err) {
+
+                console.log("에러가 찍혀라");
+            }
+        });
+
+
+
+
+        $(document).on("click", "a", function(e){
+
+            e.preventDefault();
+            var id ={
+                "id": Number($(this).attr("data-id"))
+            };
+
+            var jsonData = JSON.stringify(id);
+    console.log(jsonData);
+            $.ajax({
+                url: "/select",
+                data: jsonData,
+                contentType: "application/json",
+                type: "post",
+                success: function (data) {
+                    console.log(data);
+                    window.location.href="/?id="+id.id;
+                },
+                error: function (err) {
+
+                    console.log("에러가 찍혀라");
+                }
+            });
+        });
+    });
+
+</script>
+</html>

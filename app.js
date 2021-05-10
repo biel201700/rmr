@@ -12,7 +12,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var insertRouter = require('./routes/insert');
 var updateRouter = require('./routes/update');
-// var selectRouter = require('./routes/select');
+var selectRouter = require('./routes/select');
+var listRouter = require('./routes/list');
 
 // path
 var path = require('path');
@@ -23,6 +24,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views')); // 템플릿
 app.set('view engine', 'ejs'); // 템플릿 엔진
+
 
 app.use(logger('dev')); // 로그기록
 app.use(express.json()); // json 사용할거다 
@@ -36,7 +38,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/insert', insertRouter);
 app.use('/update', updateRouter);
-// app.use('/select', selectRouter);
+app.use('/select', selectRouter);
+app.use('/list', listRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

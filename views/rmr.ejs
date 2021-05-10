@@ -9,8 +9,6 @@
     <title>Biel 암판정</title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
-
-
     <link rel="stylesheet" href="css/rmr.css">
     <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/brands.css">
     <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/regular.css">
@@ -798,15 +796,70 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $('#btn_select').hover(function (){
-            $("#btn_select").css("background-color", "rgb(108, 108, 224)");
-            $("#btn_select").css("border", "1px solid rgb(108, 108, 224)");
-        }, function(){
-          $("#btn_select").css("background-color", "rgb(153,153,255)");
-            $("#btn_select").css("border", "1px solid rgb(153,153,255)");
+        var result = "<%= title%>";
+        console.log(result);
+
+        var id ={
+            "id": Number(result)
+        };
+
+        var jsonData = JSON.stringify(id);
+
+        $.ajax({
+            url: "/select",
+            data: jsonData,
+            contentType: "application/json",
+            type : "post",
+            success:function(data){
+                console.log(data);
+                var a = data;
+                console.log(a[0]);
+
+                // 체크된 라디오 버튼 이외의 버튼은 활성화
+                $('input:radio[id="strength"]:input[value='+a[0].strength+']').attr("checked", true);
+                $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']').attr("checked", true);
+                $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']').attr("checked", true);
+                $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']').attr("checked", true);
+                $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']').attr("checked", true);
+                $('input:radio[id="asperity"]:input[value='+a[0].asperity+']').attr("checked", true);
+                $('input:radio[id="filling"]:input[value='+a[0].filling+']').attr("checked", true);
+                $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']').attr("checked", true);
+                $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']').attr("checked", true);
+
+                $('input:radio[id="strength"]:input[value='+a[0].strength+']:checked').attr("disabled", false);
+                $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']:checked').attr("disabled", false);
+                $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']:checked').attr("disabled", false);
+                $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']:checked').attr("disabled", false);
+                $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']:checked').attr("disabled", false);
+                $('input:radio[id="asperity"]:input[value='+a[0].asperity+']:checked').attr("disabled", false);
+                $('input:radio[id="filling"]:input[value='+a[0].filling+']:checked').attr("disabled", false);
+                $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']:checked').attr("disabled", false);
+                $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']:checked').attr("disabled", false);
+
+                // 라디오 버튼 클릭 시 css 변경
+                $('input:checked').parent('td').css("background-color", "#dff0d8");
+                $('input:checked').parent('td').css("font-weight", "bold");
+
+                // 라디오 버튼 클릭 시 값 가져와 연산
+                var strength = Number($("input:radio[id='strength']:checked").val());
+                var coefficient = Number($("input:radio[id='coefficient']:checked").val());
+                var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
+                var joint_length = Number($("input:radio[id='joint_length']:checked").val());
+                var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
+                var asperity = Number($("input:radio[id='asperity']:checked").val());
+                var filling = Number($("input:radio[id='filling']:checked").val());
+                var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
+                var underground_water = Number($("input:radio[id='underground_water']:checked").val());
+
+                // 총점 계산
+                let sum = (strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water);
+                $("#sum").text(sum);
+            },
+            error: function(err){
+                alert("데이터 저장에 실패했습니다.");
+            }
         });
 
-      
         // 라디오 버튼 클릭 시
         $('input').click(function () {
 
@@ -842,12 +895,11 @@
             }
         });
 
-
         // 수정 버튼 입력 시
         $('#btn_update').click(function () {
 
             // 알림창 띄우기
-            // 확인과 취소버튼이 있는 알림창 
+            // 확인과 취소버튼이 있는 알림창
             let con = confirm("수정하시겠습니까?");
             if (con) {
 
@@ -907,7 +959,6 @@
             }
         });
 
-
         // 저장 버튼 입력 시
         $('#btn_save').click(function () {
 
@@ -963,90 +1014,24 @@
             }
         });
 
-        //          // 목록 버튼 클릭 시
-        //          $('#btn_select').click(function(){
-        //             console.log("목록으로");
-        //             $.ajax({
-        //                   url : "/select?id=3",
-        //                   type : "get",
-        //                   success:function(data){
-        //                      var a = JSON.parse(data);
-        //                      console.log(a[0]);
-        //                      $('input').prop("disabled", true);
+        // 목록 버튼 hover css
+        $('#btn_select').hover(function () {
 
+                // 마우스 올렸을 때 변경되는 색상
+                $("#btn_select").css("background-color", "rgb(108, 108, 224)");
+                $("#btn_select").css("border", "1px solid rgb(108, 108, 224)");
+            },
+            // 기본 색상
+            function () {
+                $("#btn_select").css("background-color", "rgb(153,153,255)");
+                $("#btn_select").css("border", "1px solid rgb(153,153,255)");
+            });
 
-        // $('input:radio[id="strength"]:input[value='+a[0].strength+']').attr("checked", true);
-        // $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']').attr("checked", true);
-        // $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']').attr("checked", true);
-        // $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']').attr("checked", true);
-        // $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']').attr("checked", true);
-        // $('input:radio[id="asperity"]:input[value='+a[0].asperity+']').attr("checked", true);
-        // $('input:radio[id="filling"]:input[value='+a[0].filling+']').attr("checked", true);
-        // $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']').attr("checked", true);
-        // $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']').attr("checked", true);
-
-        // $('input:radio[id="strength"]:input[value='+a[0].strength+']:checked').attr("disabled", false);
-        // $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']:checked').attr("disabled", false);
-        // $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']:checked').attr("disabled", false);
-        // $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']:checked').attr("disabled", false);
-        // $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']:checked').attr("disabled", false);
-        // $('input:radio[id="asperity"]:input[value='+a[0].asperity+']:checked').attr("disabled", false);
-        // $('input:radio[id="filling"]:input[value='+a[0].filling+']:checked').attr("disabled", false);
-        // $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']:checked').attr("disabled", false);
-        // $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']:checked').attr("disabled", false);
-
-        //                   },
-        //                   error: function(err){
-        //                      alert("데이터 저장에 실패했습니다.");
-        //                   }
-        //                });
-        //             })
-        //
-        //
-
-
-        //   //select
-        // $('#btn_update').click(function(){
-        //      let c = confirm("수정하시겠습니까?");
-        //      if(c){
-
-        //      // 비동기통신으로 데이터 주고받기 (선택된 아이디의 내역 가져오기)
-        //        $.ajax({
-        //            url : "/select?id=3",
-        //            type : "get",
-        //            success:function(data){
-        //               var a = JSON.parse(data);
-        //               console.log(a[0]);
-
-        //               // 체크된 라디오 버튼 이외의 버튼은 활성화
-        //               $('input:radio[id="strength"]:input[value='+a[0].strength+']').attr("checked", true);
-        //               $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']').attr("checked", true);
-        //               $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']').attr("checked", true);
-        //               $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']').attr("checked", true);
-        //               $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']').attr("checked", true);
-        //               $('input:radio[id="asperity"]:input[value='+a[0].asperity+']').attr("checked", true);
-        //               $('input:radio[id="filling"]:input[value='+a[0].filling+']').attr("checked", true);
-        //               $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']').attr("checked", true);
-        //               $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']').attr("checked", true);
-
-        //               $('input:radio[id="strength"]:input[value='+a[0].strength+']:checked').attr("disabled", false);
-        //               $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']:checked').attr("disabled", false);
-        //               $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']:checked').attr("disabled", false);
-        //               $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']:checked').attr("disabled", false);
-        //               $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']:checked').attr("disabled", false);
-        //               $('input:radio[id="asperity"]:input[value='+a[0].asperity+']:checked').attr("disabled", false);
-        //               $('input:radio[id="filling"]:input[value='+a[0].filling+']:checked').attr("disabled", false);
-        //               $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']:checked').attr("disabled", false);
-        //               $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']:checked').attr("disabled", false);
-
-
-        //               },
-        //            error: function(err){
-        //               alert("데이터 저장에 실패했습니다.");
-        //            }
-        //         });
-        //      }
-        // });
+        // 목록 버튼 클릭 시
+        // localhost:3000/list로 페이지 이동
+        $('#btn_select').click(function(){
+            location.href="/list";
+        });
     });
 
 </script>
