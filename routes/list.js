@@ -3,7 +3,9 @@ var router = express.Router();
 
 // 메인페이지
 router.get('/', function (req, res, next) {
-    res.render('list', {title: 'express'}); // 클라이언트에 응답 보냄
+
+    // 리스트로 페이지로 보냄
+    res.render('list', {title: 'express'});
 });
 
 // 라우터를 모듈로 만든다

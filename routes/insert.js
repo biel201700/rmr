@@ -1,9 +1,13 @@
 
-// 저장 버튼 입력 시 
+// 저장 버튼 입력 시
+// express 모듈 추가 
 var express = require('express');
+// Router 객체를 router 변수가 참조 
 var router = express.Router();
+// mysql 모듈 추가
 var mysql = require('mysql');
 
+// post 방식으로 파라미터 전송
 router.post('/', function(req, res, next) {
 
 // json으로 받아온 객체와 mysql과 연결 
@@ -28,10 +32,10 @@ var json = req.body;
     		console.log(results);
   		}
 	});
-
-	res.render('rmr', { title: 'express' });
-
+	// 결과를 rmr페이지로 렌더링(서버로부터 HTML파일을 받아 브라우저에 뿌림)
+	res.send();
 });
 
+// 라우터를 모듈로 만든다
 module.exports = router;
 

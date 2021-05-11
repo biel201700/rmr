@@ -1,4 +1,16 @@
 #btn_select{
+    float: right;
+    display: none;
 background-color: rgb(153,153,255);
-    border: 2px solid rgb(153,153,255);
+    border: 1px solid rgb(153,153,255);
+    margin-right: 10px;
+}
+#btn_save{
+    margin-right: 10px;
+    float: right;
+    display: none;
+}
+#btn_update{
+    float: right;
+    display: none;
 }

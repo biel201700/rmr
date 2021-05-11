@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap Admin App">
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!--    <link rel="icon" type="image/x-icon" href="favicon.ico">-->
+
+    <!--favicon 설정-->
+    <link rel="shortcut icon" href="/images/favicon.ico">
     <title>Biel 암판정</title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
-    <link rel="stylesheet" href="css/rmr.css">
     <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/brands.css">
     <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/regular.css">
     <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/solid.css">
@@ -27,6 +29,9 @@
     <link rel="stylesheet" href="css/bootstrap.css" id="bscss">
     <!-- =============== APP STYLES ===============-->
     <link rel="stylesheet" href="css/app.css" id="maincss">
+    <!--button css 설정-->
+    <link rel="stylesheet" href="css/rmr.css">
+
 </head>
 <body>
 <!-- Page content-->
@@ -43,9 +48,10 @@
             </div>
         </div>
         <!-- <button class="mb-1 btn btn-primary" data-toggle="modal" data-target="#newDeviceModal" type="button">새 장비 추가</button> -->
-        <button class="mb-1 btn btn-primary" id=btn_select style="margin-right : 10px; float: right;">목록</button>
-        <button class="mb-1 btn btn-danger" id=btn_save style="margin-right : 10px; float: right;">저장</button>
-        <button class="mb-1 btn btn-warning" id=btn_update style="float: right;">수정</button>
+        <!--        button 추가-->
+        <button class="mb-1 btn btn-primary" id=btn_select>목록</button>
+        <button class="mb-1 btn btn-danger" id=btn_save>저장</button>
+        <button class="mb-1 btn btn-warning" id=btn_update>수정</button>
     </div>
     <!-- END Language list-->
     <div class="row">
@@ -75,21 +81,11 @@
                 </tr>
                 <tr>
                     <td>일축압축강도 (㎏/㎠)</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="15"
-                                                      class="num">&gt 2500
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange1" id="strength" value="12" class="num">2500
-                        - 1000
-                    </td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="7"
-                                                      class="num">1000 - 500
-                    </td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="4"
-                                                      class="num">500 - 250
-                    </td>
-                    <td colspan="3" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="2"
-                                                      class="num">&lt 250
-                    </td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="15" class="num">&gt 2500</td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="12" class="num">2500 - 1000</td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="7" class="num">1000 - 500</td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="4" class="num">500 - 250</td>
+                    <td colspan="3" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="2" class="num">&lt 250</td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -101,20 +97,11 @@
                 </tr>
                 <tr>
                     <td colspan="2">②<br>암질계수(%)</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="20" class="num">90-100
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="17" class="num">75
-                        - 90
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="13" class="num">50
-                        - 75
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="8" class="num">25
-                        - 50
-                    </td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange2" id="coefficient" value="3" class="num">&lt
-                        25
-                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="20" class="num">90-100</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="17" class="num">75 - 90</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="13" class="num">50 - 75</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="8" class="num">25 - 50</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange2" id="coefficient" value="3" class="num">&lt 25</td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -126,21 +113,11 @@
                 </tr>
                 <tr>
                     <td colspan="2">③<br>절리면 간격</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="20"
-                                           class="num">&gt 2m
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="15"
-                                           class="num">0.6 ~ 2m
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="10"
-                                           class="num">600~200mm
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="8"
-                                           class="num">60~200mm
-                    </td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="5"
-                                           class="num">&lt 60mm
-                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="20" class="num">&gt 2m</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="15" class="num">0.6 ~ 2m</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="10" class="num">600~200mm</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="8"class="num">60~200mm</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="5" class="num">&lt 60mm</td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -153,17 +130,11 @@
                 <tr>
                     <td rowspan="10">④<br>불연속면의 상태</td>
                     <td>절리길이</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="6" class="num">1m
-                        미만
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="4" class="num">1~3m
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="2" class="num">3~10m
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="1" class="num">10~20m
-                    </td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange4" id="joint_length" value="0" class="num">20m이상
-                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="6" class="num">1m 미만</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="4" class="num">1~3m</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="2" class="num">3~10m</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="1" class="num">10~20m</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange4" id="joint_length" value="0" class="num">20m이상</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -175,17 +146,11 @@
                 </tr>
                 <tr>
                     <td>절리틈새</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="6" class="num">없음
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="5" class="num">0.1mm이하
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="4" class="num">0.1~1.0mm
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="1" class="num">1~5mm
-                    </td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange5" id="joint_gap" value="0" class="num">5mm
-                        이상
-                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="6" class="num">없음</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="5" class="num">0.1mm이하</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="4" class="num">0.1~1.0mm </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="1" class="num">1~5mm</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange5" id="joint_gap" value="0" class="num">5mm 이상</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -197,17 +162,11 @@
                 </tr>
                 <tr>
                     <td>거칠기</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="6" class="num">아주
-                        거침
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="4" class="num">거침
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num">약간거침
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num">평탄
-                    </td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange6" id="asperity" value="0" class="num">평면
-                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="6" class="num">아주 거침</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="4" class="num">거침</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num">약간 거침</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num">평탄</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange6" id="asperity" value="0" class="num">평면</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -219,20 +178,11 @@
                 </tr>
                 <tr>
                     <td>충전물</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="6" class="num">없음
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="5" class="num">경질
-                        &lt 5
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="3" class="num">경질
-                        &gt 5
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="1" class="num">연질
-                        &lt 5
-                    </td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange7" id="filling" value="0" class="num">연질
-                        &gt 5
-                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="6" class="num">없음</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="5" class="num">경질 &lt 5</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="3" class="num">경질 &gt 5</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="1" class="num">연질 &lt 5</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange7" id="filling" value="0" class="num">연질 &gt 5</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -244,21 +194,11 @@
                 </tr>
                 <tr>
                     <td>풍화도</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="6"
-                                           class="num">신선
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="5"
-                                           class="num">약간 풍화
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="3"
-                                           class="num">보통
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="1"
-                                           class="num">심한 풍화
-                    </td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="0"
-                                           class="num">완전 분해
-                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="6" class="num">신선</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="5" class="num">약간 풍화</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="3" class="num">보통</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="1" class="num">심한 풍화</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="0" class="num">완전 분해</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -279,21 +219,11 @@
                 </tr>
                 <tr>
                     <td>10m당 유입량(ℓ/min)</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="15"
-                                           class="num">없음
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="10"
-                                           class="num">10미만
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="7"
-                                           class="num">10~25
-                    </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="4"
-                                           class="num">25~125
-                    </td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange9" id="underground_water" value="0"
-                                           class="num">125초과
-                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="15" class="num">없음</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="10" class="num">10미만</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="7" class="num">10~25</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="4" class="num">25~125</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange9" id="underground_water" value="0" class="num">125초과</td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -792,73 +722,115 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
         integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
         crossorigin="anonymous"></script>
-
+<!--alert css-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        // 리스트페이지에서 id 값을 누르면 나오는 상세페이지
+        // select 한 결과를 상세페이지에 넘기기
+        // index.js에서 받아온 id값
+        var result = "<%= id%>";
 
-        var result = "<%= title%>";
-        console.log(result);
+        // 상세페이지 로딩 시 목록 및 수정 버튼 보이기
+        if(result != 0){
+            // 목록 버튼 보이기
+            // 기본으로 display none 설정 되어있음
+            $("#btn_select").css("display", "inline-block");
+            // select 한 결과의 id를 숫자로 변환
+            var id ={
+                "id": Number(result)
+            };
 
-        var id ={
-            "id": Number(result)
-        };
+            // JSON 객체를 String 객체로 변환
+            // value 데이터 타입이 string일 경우, 그 값 자체가 string
+            // value 데이터 타입이 배열일 경우, 그 배열 자체가 string
+            var jsonData = JSON.stringify(id);
 
-        var jsonData = JSON.stringify(id);
+            // 상세페이지 이동 시
+            // 비동기통신으로 데이터 주고받기
+            $.ajax({
+                url: "/select", // select.js
+                data: jsonData,
+                contentType: "application/json",
+                type : "post",
+                success:function(data){
+                    var a = data;
 
-        $.ajax({
-            url: "/select",
-            data: jsonData,
-            contentType: "application/json",
-            type : "post",
-            success:function(data){
-                console.log(data);
-                var a = data;
-                console.log(a[0]);
+                    // 체크된 라디오 버튼 이외의 버튼은 활성화
+                    $('input:radio[id="strength"]:input[value='+a[0].strength+']').attr("checked", true);
+                    $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']').attr("checked", true);
+                    $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']').attr("checked", true);
+                    $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']').attr("checked", true);
+                    $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']').attr("checked", true);
+                    $('input:radio[id="asperity"]:input[value='+a[0].asperity+']').attr("checked", true);
+                    $('input:radio[id="filling"]:input[value='+a[0].filling+']').attr("checked", true);
+                    $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']').attr("checked", true);
+                    $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']').attr("checked", true);
 
-                // 체크된 라디오 버튼 이외의 버튼은 활성화
-                $('input:radio[id="strength"]:input[value='+a[0].strength+']').attr("checked", true);
-                $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']').attr("checked", true);
-                $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']').attr("checked", true);
-                $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']').attr("checked", true);
-                $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']').attr("checked", true);
-                $('input:radio[id="asperity"]:input[value='+a[0].asperity+']').attr("checked", true);
-                $('input:radio[id="filling"]:input[value='+a[0].filling+']').attr("checked", true);
-                $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']').attr("checked", true);
-                $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']').attr("checked", true);
+                    $('input:radio[id="strength"]:input[value='+a[0].strength+']:checked').attr("disabled", false);
+                    $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']:checked').attr("disabled", false);
+                    $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']:checked').attr("disabled", false);
+                    $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']:checked').attr("disabled", false);
+                    $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']:checked').attr("disabled", false);
+                    $('input:radio[id="asperity"]:input[value='+a[0].asperity+']:checked').attr("disabled", false);
+                    $('input:radio[id="filling"]:input[value='+a[0].filling+']:checked').attr("disabled", false);
+                    $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']:checked').attr("disabled", false);
+                    $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']:checked').attr("disabled", false);
 
-                $('input:radio[id="strength"]:input[value='+a[0].strength+']:checked').attr("disabled", false);
-                $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']:checked').attr("disabled", false);
-                $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']:checked').attr("disabled", false);
-                $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']:checked').attr("disabled", false);
-                $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']:checked').attr("disabled", false);
-                $('input:radio[id="asperity"]:input[value='+a[0].asperity+']:checked').attr("disabled", false);
-                $('input:radio[id="filling"]:input[value='+a[0].filling+']:checked').attr("disabled", false);
-                $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']:checked').attr("disabled", false);
-                $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']:checked').attr("disabled", false);
+                    // 라디오 버튼 클릭 시 css 변경
+                    $('input:checked').parent('td').css("background-color", "#dff0d8");
+                    $('input:checked').parent('td').css("font-weight", "bold");
 
-                // 라디오 버튼 클릭 시 css 변경
-                $('input:checked').parent('td').css("background-color", "#dff0d8");
-                $('input:checked').parent('td').css("font-weight", "bold");
+                    // 라디오 버튼 클릭 시 값 가져와 연산
+                    var strength = Number($("input:radio[id='strength']:checked").val());
+                    var coefficient = Number($("input:radio[id='coefficient']:checked").val());
+                    var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
+                    var joint_length = Number($("input:radio[id='joint_length']:checked").val());
+                    var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
+                    var asperity = Number($("input:radio[id='asperity']:checked").val());
+                    var filling = Number($("input:radio[id='filling']:checked").val());
+                    var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
+                    var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-                // 라디오 버튼 클릭 시 값 가져와 연산
-                var strength = Number($("input:radio[id='strength']:checked").val());
-                var coefficient = Number($("input:radio[id='coefficient']:checked").val());
-                var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
-                var joint_length = Number($("input:radio[id='joint_length']:checked").val());
-                var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
-                var asperity = Number($("input:radio[id='asperity']:checked").val());
-                var filling = Number($("input:radio[id='filling']:checked").val());
-                var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
-                var underground_water = Number($("input:radio[id='underground_water']:checked").val());
+                    // 총점 계산
+                    let sum = (strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water);
+                    $("#sum").text(sum);
+                },
+                error: function(err){
+                    alert("데이터 저장에 실패했습니다.");
+                }
+            });
+            // 수정 버튼 보이기
+            $("#btn_update").show();
+        }
+        // 메인페이지 로딩 시 저장 버튼 보이기
+        if(result == 0){
+            $("#btn_save").css("display", "inline-block");
+            $("#btn_select").css("display", "inline-block");
+        }
 
-                // 총점 계산
-                let sum = (strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water);
-                $("#sum").text(sum);
+        // 목록 버튼 hover css
+        $('#btn_select').hover(function () {
+
+            // 마우스 올렸을 때 변경되는 색상
+                $("#btn_select").css("background-color", "rgb(108, 108, 224)");
+                $("#btn_select").css("border", "1px solid rgb(108, 108, 224)");
             },
-            error: function(err){
-                alert("데이터 저장에 실패했습니다.");
-            }
+
+            // 기본 색상
+            // rmr.css에 명시되어 있음
+            function () {
+                $("#btn_select").css("background-color", "rgb(153,153,255)");
+                $("#btn_select").css("border", "1px solid rgb(153,153,255)");
+            });
+
+        // 목록 버튼 클릭 시
+        // localhost:3000/list로 페이지 이동
+        $('#btn_select').click(function(){
+            location.href="/list";
         });
+
+
 
         // 라디오 버튼 클릭 시
         $('input').click(function () {
@@ -895,13 +867,13 @@
             }
         });
 
-        // 수정 버튼 입력 시
+        // 수정 버튼 클릭 시
         $('#btn_update').click(function () {
 
-            // 알림창 띄우기
-            // 확인과 취소버튼이 있는 알림창
-            let con = confirm("수정하시겠습니까?");
-            if (con) {
+            // 리스트페이지에서 id 값을 누르면 나오는 상세페이지
+            // select 한 결과를 상세페이지에 넘기기
+            var result = "<%= id%>";
+            result = Number(result);
 
                 // 라디오 버튼 클릭 시 값
                 var strength = Number($("input:radio[id='strength']:checked").val());
@@ -914,17 +886,7 @@
                 var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
                 var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-                // 총점
-                let sum = (strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water);
-
-                // 항목을 전부 체크 하지 않을 시
-                if (isNaN(sum)) { // sum의 값이 숫자가 아니면 true 반환
-                    alert("모든항목을 체크해주세요");
-
-                    // 항목을 전부 체크 시 값 가져와 연산하기 (총점)
-                } else { // sum의 값이 숫자이면 false 반환
-
-                    // 라디오 버튼 선택했을 때 값 가져와 객체에 담기
+                // 라디오 버튼 선택했을 때 값 가져와 객체에 담기
                     let rmr = {
                         "strength": strength,
                         'coefficient': coefficient,
@@ -934,7 +896,8 @@
                         'asperity': asperity,
                         'filling': filling,
                         'weathering_degree': weathering_degree,
-                        'underground_water': underground_water
+                        'underground_water': underground_water,
+                        'id': result
                     };
 
                     // JSON 객체를 String 객체로 변환
@@ -949,18 +912,25 @@
                         data: jsonData,
                         contentType: "application/json",
                         success: function (data) {
-                            alert("수정이 완료되었습니다.");
+                            Swal.fire(
+                                '수정 완료!',
+                                '수정이 완료되었습니다!',
+                                'success'
+                            )
                         },
                         error: function (err) {
-                            alert("수정이 되지 않았습니다.");
+                            Swal.fire(
+                                '수정 실패!',
+                                '수정이 되지 않았습니다.',
+                                'success'
+                            )
                         }
                     });
-                }
-            }
-        });
+                });
 
-        // 저장 버튼 입력 시
+        // 저장 버튼 클릭 시
         $('#btn_save').click(function () {
+            console.log("집 가고 싶다");
 
             // 라디오 버튼 클릭 시 값 가져와 연산
             var strength = Number($("input:radio[id='strength']:checked").val());
@@ -996,7 +966,7 @@
                 };
 
                 var jsonData = JSON.stringify(rmr);
-                console.log(jsonData);
+                // console.log(jsonData);
 
                 // 비동기통신으로 데이터 주고받기
                 $.ajax({
@@ -1005,6 +975,7 @@
                     data: jsonData,
                     contentType: "application/json",
                     success: function (data) {
+                        console.log(data);
                         alert("저장되었습니다!");
                     },
                     error: function (err) {
@@ -1012,25 +983,6 @@
                     }
                 });
             }
-        });
-
-        // 목록 버튼 hover css
-        $('#btn_select').hover(function () {
-
-                // 마우스 올렸을 때 변경되는 색상
-                $("#btn_select").css("background-color", "rgb(108, 108, 224)");
-                $("#btn_select").css("border", "1px solid rgb(108, 108, 224)");
-            },
-            // 기본 색상
-            function () {
-                $("#btn_select").css("background-color", "rgb(153,153,255)");
-                $("#btn_select").css("border", "1px solid rgb(153,153,255)");
-            });
-
-        // 목록 버튼 클릭 시
-        // localhost:3000/list로 페이지 이동
-        $('#btn_select').click(function(){
-            location.href="/list";
         });
     });
 
