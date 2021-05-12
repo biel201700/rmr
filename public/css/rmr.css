@@ -14,3 +14,7 @@ background-color: rgb(153,153,255);
     float: right;
     display: none;
 }
+#modal{
+    margin: 0px 10px 4px 0px;
+    float: right;
+}

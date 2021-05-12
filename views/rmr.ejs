@@ -1,62 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Bootstrap Admin App">
-    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Bootstrap Admin App" />
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin" />
     <!--    <link rel="icon" type="image/x-icon" href="favicon.ico">-->
 
     <!--favicon 설정-->
-    <link rel="shortcut icon" href="/images/favicon.ico">
+    <link rel="shortcut icon" href="/images/favicon.ico" />
     <title>Biel 암판정</title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/brands.css">
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/regular.css">
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/solid.css">
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/brands.css" />
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/regular.css" />
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/solid.css" />
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/fontawesome.css" />
     <!-- SIMPLE LINE ICONS-->
-    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css" />
     <!-- ANIMATE.CSS-->
-    <link rel="stylesheet" href="vendor/animate.css/animate.css">
+    <link rel="stylesheet" href="vendor/animate.css/animate.css" />
     <!-- WHIRL (spinners)-->
-    <link rel="stylesheet" href="vendor/whirl/dist/whirl.css">
+    <link rel="stylesheet" href="vendor/whirl/dist/whirl.css" />
     <!-- =============== PAGE VENDOR STYLES ===============-->
     <!-- WEATHER ICONS-->
-    <link rel="stylesheet" href="vendor/weather-icons/css/weather-icons.css">
+    <link rel="stylesheet" href="vendor/weather-icons/css/weather-icons.css" />
     <!-- =============== BOOTSTRAP STYLES ===============-->
-    <link rel="stylesheet" href="css/bootstrap.css" id="bscss">
+    <link rel="stylesheet" href="css/bootstrap.css" id="bscss" />
     <!-- =============== APP STYLES ===============-->
-    <link rel="stylesheet" href="css/app.css" id="maincss">
+    <link rel="stylesheet" href="css/app.css" id="maincss" />
     <!--button css 설정-->
-    <link rel="stylesheet" href="css/rmr.css">
-
+    <link rel="stylesheet" href="css/rmr.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 </head>
 <body>
+<!--modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">실습</h5>
+            </div>
+            <div class="modal-body">
+                <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="15" class="num" />15</td>
+                <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="12" class="num" />12</td>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Page content-->
 <div class="content-wrapper">
     <div class="content-heading">
-        <div>R.M.R Check List<small data-localize="dashboard.WELCOME"></small>
-        </div>
+        <div>R.M.R Check List<small data-localize="dashboard.WELCOME"></small></div>
         <!-- START Language list-->
         <div class="ml-auto">
             <!--<div class="btn-group"><button class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret" type="button" data-toggle="dropdown">English</button>-->
-            <div class="dropdown-menu dropdown-menu-right-forced animated fadeInUpShort" role="menu"><a
-                        class="dropdown-item" href="#" data-set-lang="en">English</a><a class="dropdown-item" href="#"
-                                                                                        data-set-lang="es">Spanish</a>
+            <div class="dropdown-menu dropdown-menu-right-forced animated fadeInUpShort" role="menu">
+                <a class="dropdown-item" href="#" data-set-lang="en">English</a><a class="dropdown-item" href="#" data-set-lang="es">Spanish</a>
             </div>
         </div>
         <!-- <button class="mb-1 btn btn-primary" data-toggle="modal" data-target="#newDeviceModal" type="button">새 장비 추가</button> -->
         <!--        button 추가-->
-        <button class="mb-1 btn btn-primary" id=btn_select>목록</button>
-        <button class="mb-1 btn btn-danger" id=btn_save>저장</button>
-        <button class="mb-1 btn btn-warning" id=btn_update>수정</button>
+        <button class="mb-1 btn btn-primary" id="btn_select">목록</button>
+        <button class="mb-1 btn btn-danger" id="btn_save">저장</button>
+        <button class="mb-1 btn btn-warning" id="btn_update">수정</button>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">모달</button>
     </div>
     <!-- END Language list-->
     <div class="row">
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover" style="text-align:center;">
+            <table class="table table-striped table-bordered table-hover" style="text-align: center;">
                 <tr>
                     <td colspan="13">공 사 명 : XX-XX간 도로공사 일시 : 2021년 2월 2일</td>
                 </tr>
@@ -81,11 +100,11 @@
                 </tr>
                 <tr>
                     <td>일축압축강도 (㎏/㎠)</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="15" class="num">&gt 2500</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="12" class="num">2500 - 1000</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="7" class="num">1000 - 500</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="4" class="num">500 - 250</td>
-                    <td colspan="3" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="2" class="num">&lt 250</td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="15" class="num" />&gt 2500</td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="12" class="num" />2500 - 1000</td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="7" class="num" />1000 - 500</td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="4" class="num" />500 - 250</td>
+                    <td colspan="3" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="2" class="num" />&lt 250</td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -96,12 +115,15 @@
                     <td colspan="3">2</td>
                 </tr>
                 <tr>
-                    <td colspan="2">②<br>암질계수(%)</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="20" class="num">90-100</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="17" class="num">75 - 90</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="13" class="num">50 - 75</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="8" class="num">25 - 50</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange2" id="coefficient" value="3" class="num">&lt 25</td>
+                    <td colspan="2">
+                        ②<br />
+                        암질계수(%)
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="20" class="num" />90-100</td>
+                    <td colspan="2 "><input type="radio" name="cellcolorchange2" id="coefficient" value="17" class="num" />75 - 90</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="13" class="num" />50 - 75</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="8" class="num" />25 - 50</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange2" id="coefficient" value="3" class="num" />&lt 25</td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -112,12 +134,15 @@
                     <td colspan="3">3</td>
                 </tr>
                 <tr>
-                    <td colspan="2">③<br>절리면 간격</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="20" class="num">&gt 2m</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="15" class="num">0.6 ~ 2m</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="10" class="num">600~200mm</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="8"class="num">60~200mm</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="5" class="num">&lt 60mm</td>
+                    <td colspan="2">
+                        ③<br />
+                        절리면 간격
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="20" class="num" />&gt 2m</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="15" class="num" />0.6 ~ 2m</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="10" class="num" />600~200mm</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="8" class="num" />60~200mm</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="5" class="num" />&lt 60mm</td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -128,13 +153,16 @@
                     <td colspan="3">5</td>
                 </tr>
                 <tr>
-                    <td rowspan="10">④<br>불연속면의 상태</td>
+                    <td rowspan="10">
+                        ④<br />
+                        불연속면의 상태
+                    </td>
                     <td>절리길이</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="6" class="num">1m 미만</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="4" class="num">1~3m</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="2" class="num">3~10m</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="1" class="num">10~20m</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange4" id="joint_length" value="0" class="num">20m이상</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="6" class="num" />1m 미만</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="4" class="num" />1~3m</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="2" class="num" />3~10m</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="1" class="num" />10~20m</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange4" id="joint_length" value="0" class="num" />20m이상</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -146,11 +174,11 @@
                 </tr>
                 <tr>
                     <td>절리틈새</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="6" class="num">없음</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="5" class="num">0.1mm이하</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="4" class="num">0.1~1.0mm </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="1" class="num">1~5mm</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange5" id="joint_gap" value="0" class="num">5mm 이상</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="6" class="num" />없음</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="5" class="num" />0.1mm이하</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="4" class="num" />0.1~1.0mm</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="1" class="num" />1~5mm</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange5" id="joint_gap" value="0" class="num" />5mm 이상</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -162,11 +190,11 @@
                 </tr>
                 <tr>
                     <td>거칠기</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="6" class="num">아주 거침</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="4" class="num">거침</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num">약간 거침</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num">평탄</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange6" id="asperity" value="0" class="num">평면</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="6" class="num" />아주 거침</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="4" class="num" />거침</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num" />약간 거침</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num" />평탄</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange6" id="asperity" value="0" class="num" />평면</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -178,11 +206,11 @@
                 </tr>
                 <tr>
                     <td>충전물</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="6" class="num">없음</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="5" class="num">경질 &lt 5</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="3" class="num">경질 &gt 5</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="1" class="num">연질 &lt 5</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange7" id="filling" value="0" class="num">연질 &gt 5</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="6" class="num" />없음</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="5" class="num" />경질 &lt 5</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="3" class="num" />경질 &gt 5</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="1" class="num" />연질 &lt 5</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange7" id="filling" value="0" class="num" />연질 &gt 5</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -194,11 +222,11 @@
                 </tr>
                 <tr>
                     <td>풍화도</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="6" class="num">신선</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="5" class="num">약간 풍화</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="3" class="num">보통</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="1" class="num">심한 풍화</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="0" class="num">완전 분해</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="6" class="num" />신선</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="5" class="num" />약간 풍화</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="3" class="num" />보통</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="1" class="num" />심한 풍화</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="0" class="num" />완전 분해</td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -209,7 +237,10 @@
                     <td colspan="3">0</td>
                 </tr>
                 <tr>
-                    <td rowspan="2" class="water">⑤<br>지하수</td>
+                    <td rowspan="2" class="water">
+                        ⑤<br />
+                        지하수
+                    </td>
                     <td>일반적인 상태</td>
                     <td colspan="2">건조상태</td>
                     <td colspan="2">습윤</td>
@@ -219,11 +250,11 @@
                 </tr>
                 <tr>
                     <td>10m당 유입량(ℓ/min)</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="15" class="num">없음</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="10" class="num">10미만</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="7" class="num">10~25</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="4" class="num">25~125</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange9" id="underground_water" value="0" class="num">125초과</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="15" class="num" />없음</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="10" class="num" />10미만</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="7" class="num" />10~25</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="4" class="num" />25~125</td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange9" id="underground_water" value="0" class="num" />125초과</td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -234,7 +265,10 @@
                     <td colspan="3">0</td>
                 </tr>
                 <tr>
-                    <td rowspan="4">⑤<br>절리방향에 따른 보정</td>
+                    <td rowspan="4">
+                        ⑤<br />
+                        절리방향에 따른 보정
+                    </td>
                     <td>주향</td>
                     <td colspan="8">주향이 터널방향과 수직</td>
                     <td colspan="2" rowspan="2">주향과 터널축이 평행</td>
@@ -249,8 +283,8 @@
                     <td>경사각</td>
                     <td colspan="2">45˚ ~ 90˚</td>
                     <td colspan="2">20˚ ~ 45˚</td>
-                    <td colspan="2"> 45˚ ~ 90˚</td>
-                    <td colspan="2"> 20˚ ~ 45˚</td>
+                    <td colspan="2">45˚ ~ 90˚</td>
+                    <td colspan="2">20˚ ~ 45˚</td>
                     <td>45˚ ~ 90˚</td>
                     <td>20˚ ~ 45˚</td>
                     <td>0˚ ~ 20˚</td>
@@ -299,431 +333,446 @@
                     <td colspan="3"></td>
                 </tr>
             </table>
+            <table>
+                <button type="submit" class="btn btn-success" style="float: right;">모달에 값 전달</button>
+            <tr>
+                <td>연령별</td>
+                <td><input type="radio" class="r_test" value="10대">10대</td>
+                <td><input type="radio" class="r_test" value="20대">20대</td>
+                <td><input type="radio" class="r_test" value="30대">30대</td>
+                <td><input type="radio" class="r_test" value="40대">40대</td>
+                <td><input type="radio" class="r_test" value="50대">50대</td>
+            </tr>
+                <td>연령별</td>
+                <td><input type="checkbox" class="c_test">10대</td>
+                <td> <input type="checkbox" class="c_test">20대</td>
+                <td><input type="checkbox" class="c_test">30대</td>
+
+
+
+            </table>
         </div>
     </div>
     <!--div class="row">
-       < !-- START dashboard main content-- >
-       <div class="table-responsive">
-       <table class="table table-striped table-bordered table-hover">
-
-       <thead>
-       <tr>
-       <td>Location : T/L 1 upper, lower stage</td>
-       <td>Station : 5 + 16, lower, right enlarge</td>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td colspan="3">일축압축강도 평가</td>
-       </tr>
-
-       <tr>
-       <td>표현</td>
-       <td>현장확인내용</td>
-       <td>개략강도(MPa)</td>
-       </tr>
-
-       <tr>
-       <td>극히 강함</td>
-       <td>지질해머로 자국을 내는 것만 가능한 상태</td>
-       <td> > 250/td>
-       </tr>
-
-       <tr>
-       <td>매우 강함</td>
-       <td>깨려면 지질해머로 매우 여러 번 타격해야 하는 상태 </td>
-       <td>100 ~ 250</td>
-       </tr>
-
-       <tr>
-       <td>강 함</td>
-       <td>깨려면 지질 해머로 한 번 또는 약간 더 타격해야 하는 상태</td>
-       <td>50 ~ 100</td>
-       </tr>
-
-       <tr>
-       <td>보통 강함</td>
-       <td>깨려면 지질 해머의 한 번 타격으로 깨지며, 주머니칼로 흠집을 내거나 (껍질처럼) 벗겨 낼 수 없는 상태</td>
-       <td>25 ~ 50</td>
-       </tr>
-
-       <tr>
-       <td>약 함</td>
-       <td>지질해머의 뼈족한 끝으로 타격하면 얕게 파진 홈이 생기며, 주머니칼로 (껍질처럼) 벗겨낼 수 없는 상태</td>
-       <td>5 ~ 25</td>
-       </tr>
-
-       <tr>
-       <td>매우 약함</td>
-       <td>지질해머의 뼈족한 끝으로 타격하면 박살이 나며, 주머니칼로 (껍질처럼) 벗겨낼 수 없는 상태</td>
-       <td>1 ~ 5</td>
-       </tr>
-
-       <tr>
-       <td>극히 약함</td>
-       <td>엄지손가락의 힘으로 누르면 약간 들어가는 상태</td>
-       <td>0.25 ~ 1</td>
-       </tr>
-
-       </tbody>
-       </table>
-
-       <table class="table table-striped table-bordered table-hover">
-
-       <thead>
-       <tr>
-       <th>RQD(%)</th>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td>매우 좋음</td>
-       <td>90~100%</td>
-       <td>1</td>
-       </tr>
-
-       <tr>
-       <td>좋 음</td>
-       <td>75~90%</td>
-       <td>2</td>
-       </tr>
-
-       <tr>
-       <td>보 통</td>
-       <td>50~75%</td>
-       <td>3</td>
-       </tr>
-
-       <tr>
-       <td>나 쁨</td>
-       <td>25~50%</td>
-       <td>4</td>
-       </tr>
-
-       <tr>
-       <td>매우 나쁨</td>
-       <td> &lt 25%</td>
-       <td>5</td>
-       </tr>
-
-       </tbody>
-       </table>
-
-       <table class="table table-striped table-bordered table-hover">
-       <thead>
-       <tr>
-       <th>지하수 조건</th>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td>10미터기준 분당유출(L/분)</td>
-       <td>&lt10</td>
-       <td>10</td>
-       </tr>
-
-       <tr>
-       <td>건 조</td>
-       <td>유출 없음</td>
-       <td>15</td>
-       </tr>
-
-       <tr>
-       <td>습 윤</td>
-       <td>&lt10</td>
-       <td>10</td>
-       </tr>
-
-       <tr>
-       <td>젖 음</td>
-       <td>10-20</td>
-       <td>7</td>
-       </tr>
-
-       <tr>
-       <td>물방울이 떨어짐</td>
-       <td>25-125</td>
-       <td>4</td>
-       </tr>
-
-       <tr>
-       <td>흐르는 상태</td>
-       <td> &gt 125</td>
-       <td>0</td>
-       </tr>
-
-       </tbody>
-       </table>
-
-       <table class="table table-striped table-bordered table-hover">
-       <thead>
-       <tr>
-       <th>불연속면 틈새</th>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td>틈 새</td>
-       <td>점 수</td>
-       </tr>
-
-       <tr>
-       <td>틈이 없음</td>
-       <td>6</td>
-       </tr>
-
-       <tr>
-       <td>&lt 0.1mm</td>
-       <td>5</td>
-       </tr>
-
-       <tr>
-       <td>0.1 ~ 1.0mm</td>
-       <td>4</td>
-       </tr>
-
-       <tr>
-       <td>1 ~ 5 mm</td>
-       <td>1</td>
-       </tr>
-
-       <tr>
-       <td> &gt 5mm</td>
-       <td>0</td>
-       </tr>
-
-       </tbody>
-       </table>
-
-       <table class="table table-striped table-bordered table-hover">
-       <thead>
-       <tr>
-       <th>불연속면 연장성</th>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td>단층 또는 전단절리와 연관된 것</td>
-       <td>10~20m</td>
-       <td>1</td>
-       </tr>
-
-       <tr>
-       <td>엽리/층리와 일치하는 절리</td>
-       <td>3~10m</td>
-       <td>2</td>
-       </tr>
-
-       <tr>
-       <td rowspan="2">불연속면 빈도/거칠기</td>
-       <td>빈도 높고 매끄러움</td>
-       <td>3~10m</td>
-       <td>2</td>
-       </tr>
-
-       <tr>
-       <td>불연속면 거칠음</td>
-       <td>1~3m</td>
-       <td>4</td>
-       </tr>
-
-       <tr>
-       <td rowspan="2">절리 한쪽 끝부분 보임</td>
-       <td>보이는 길이 >= 1.5m</td>
-       <td>3~10m</td>
-       <td>2</td>
-       </tr>
-
-       <tr>
-       <td>보이는 길이 &lt 1.5m</td>
-       <td>1~3m</td>
-       <td>4</td>
-       </tr>
-
-       <tr>
-       <td rowspan="2">절리 양쪽 끝이 보임</td>
-       <td>측정값 >= 1m</td>
-       <td>1~3m</td>
-       <td>2</td>
-       </tr>
-
-       <tr>
-       <td>측정값 &lt 1m</td>
-       <td><=1m</td>
-       <td>6</td>
-       </tr>
-
-       </tbody>
-       </table>
-
-       <table class="table table-striped table-bordered table-hover">
-       <thead>
-       <tr>
-       <th>불연속면 충전물</th>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td rowspan="3">단단한 충전물</td>
-       <td>없음</td>
-       <td>6</td>
-       </tr>
-
-       <tr>
-       <td>&lt 5mm</td>
-       <td>4</td>
-       </tr>
-
-       <tr>
-       <td>&gt 5mm</td>
-       <td>2</td>
-       </tr>
-
-       <tr>
-       <td rowspan="2">부드러운 충전물</td>
-       <td>&lt 5mm</td>
-       <td>2</td>
-       </tr>
-
-       <tr>
-       <td>&gt 5mm</td>
-       <td>0</td>
-       </tr>
-
-       </tbody>
-       </table>
-
-       <table class="table table-striped table-bordered table-hover">
-       <thead>
-       <tr>
-       <th>불연속면 충전물</th>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td>매우 연약 점토</td>
-       <td>&gt 0.025</td>
-       </tr>
-
-       <tr>
-       <td>연약 점토</td>
-       <td>0.025 ~ 0.05</td>
-       </tr>
-
-       <tr>
-       <td>단단한 점토</td>
-       <td>0.05 ~ 0.1</td>
-       </tr>
-
-       <tr>
-       <td>견고 점토</td>
-       <td>0.1 ~ 0.25</td>
-       </tr>
-
-       <tr>
-       <td>매우 견고 점토</td>
-       <td>0.25 ~ 0.5</td>
-       </tr>
-
-       <tr>
-       <td>고결 점토</td>
-       <td>&gt 0.5</td>
-       </tr>
-
-       </tbody>
-       </table>
-
-       <table class="table table-striped table-bordered table-hover">
-       <thead>
-       <tr>
-       <th>불연속면 거칠기</th>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td>매우 거칠</td>
-       <td>6</td>
-       </tr>
-
-       <tr>
-       <td>거칢</td>
-       <td>5</td>
-       </tr>
-
-       <tr>
-       <td>약간 거칣</td>
-       <td>3</td>
-       </tr>
-
-       <tr>
-       <td>부드러움</td>
-       <td>1</td>
-       </tr>
-
-       <tr>
-       <td>미끄러움</td>
-       <td>0</td>
-       </tr>
-
-       </tbody>
-       </table>
-
-       <table class="table table-striped table-bordered table-hover">
-       <thead>
-       <tr>
-       <th>불연속면 풍화도</th>
-       </tr>
-       </thead>
-
-       <tbody>
-       <tr>
-       <td>신선(Fresh)</td>
-       <td>6</td>
-       </tr>
-
-       <tr>
-       <td>약간 풍화(SW)</td>
-       <td>5</td>
-       </tr>
-
-       <tr>
-       <td>보통 풍화(MW)</td>
-       <td>3</td>
-       </tr>
-
-       <tr>
-       <td>심한 풍화(HW)</td>
-       <td>1</td>
-       </tr>
-
-       <tr>
-       <td>완전 풍화(CW)</td>
-       <td>0</td>
-       </tr>
-
-       </tbody>
-       </table>
-       </div>
-       </div-->
+< !-- START dashboard main content-- >
+<div class="table-responsive">
+<table class="table table-striped table-bordered table-hover">
+
+<thead>
+<tr>
+<td>Location : T/L 1 upper, lower stage</td>
+<td>Station : 5 + 16, lower, right enlarge</td>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td colspan="3">일축압축강도 평가</td>
+</tr>
+
+<tr>
+<td>표현</td>
+<td>현장확인내용</td>
+<td>개략강도(MPa)</td>
+</tr>
+
+<tr>
+<td>극히 강함</td>
+<td>지질해머로 자국을 내는 것만 가능한 상태</td>
+<td> > 250/td>
+</tr>
+
+<tr>
+<td>매우 강함</td>
+<td>깨려면 지질해머로 매우 여러 번 타격해야 하는 상태 </td>
+<td>100 ~ 250</td>
+</tr>
+
+<tr>
+<td>강 함</td>
+<td>깨려면 지질 해머로 한 번 또는 약간 더 타격해야 하는 상태</td>
+<td>50 ~ 100</td>
+</tr>
+
+<tr>
+<td>보통 강함</td>
+<td>깨려면 지질 해머의 한 번 타격으로 깨지며, 주머니칼로 흠집을 내거나 (껍질처럼) 벗겨 낼 수 없는 상태</td>
+<td>25 ~ 50</td>
+</tr>
+
+<tr>
+<td>약 함</td>
+<td>지질해머의 뼈족한 끝으로 타격하면 얕게 파진 홈이 생기며, 주머니칼로 (껍질처럼) 벗겨낼 수 없는 상태</td>
+<td>5 ~ 25</td>
+</tr>
+
+<tr>
+<td>매우 약함</td>
+<td>지질해머의 뼈족한 끝으로 타격하면 박살이 나며, 주머니칼로 (껍질처럼) 벗겨낼 수 없는 상태</td>
+<td>1 ~ 5</td>
+</tr>
+
+<tr>
+<td>극히 약함</td>
+<td>엄지손가락의 힘으로 누르면 약간 들어가는 상태</td>
+<td>0.25 ~ 1</td>
+</tr>
+
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+
+<thead>
+<tr>
+<th>RQD(%)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>매우 좋음</td>
+<td>90~100%</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>좋 음</td>
+<td>75~90%</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>보 통</td>
+<td>50~75%</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>나 쁨</td>
+<td>25~50%</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>매우 나쁨</td>
+<td> &lt 25%</td>
+<td>5</td>
+</tr>
+
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>지하수 조건</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>10미터기준 분당유출(L/분)</td>
+<td>&lt10</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>건 조</td>
+<td>유출 없음</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>습 윤</td>
+<td>&lt10</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>젖 음</td>
+<td>10-20</td>
+<td>7</td>
+</tr>
+
+<tr>
+<td>물방울이 떨어짐</td>
+<td>25-125</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>흐르는 상태</td>
+<td> &gt 125</td>
+<td>0</td>
+</tr>
+
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>불연속면 틈새</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>틈 새</td>
+<td>점 수</td>
+</tr>
+
+<tr>
+<td>틈이 없음</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>&lt 0.1mm</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>0.1 ~ 1.0mm</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>1 ~ 5 mm</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td> &gt 5mm</td>
+<td>0</td>
+</tr>
+
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>불연속면 연장성</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>단층 또는 전단절리와 연관된 것</td>
+<td>10~20m</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>엽리/층리와 일치하는 절리</td>
+<td>3~10m</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td rowspan="2">불연속면 빈도/거칠기</td>
+<td>빈도 높고 매끄러움</td>
+<td>3~10m</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>불연속면 거칠음</td>
+<td>1~3m</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td rowspan="2">절리 한쪽 끝부분 보임</td>
+<td>보이는 길이 >= 1.5m</td>
+<td>3~10m</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>보이는 길이 &lt 1.5m</td>
+<td>1~3m</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td rowspan="2">절리 양쪽 끝이 보임</td>
+<td>측정값 >= 1m</td>
+<td>1~3m</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>측정값 &lt 1m</td>
+<td><=1m</td>
+<td>6</td>
+</tr>
+
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>불연속면 충전물</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td rowspan="3">단단한 충전물</td>
+<td>없음</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>&lt 5mm</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>&gt 5mm</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td rowspan="2">부드러운 충전물</td>
+<td>&lt 5mm</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>&gt 5mm</td>
+<td>0</td>
+</tr>
+
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>불연속면 충전물</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>매우 연약 점토</td>
+<td>&gt 0.025</td>
+</tr>
+
+<tr>
+<td>연약 점토</td>
+<td>0.025 ~ 0.05</td>
+</tr>
+
+<tr>
+<td>단단한 점토</td>
+<td>0.05 ~ 0.1</td>
+</tr>
+
+<tr>
+<td>견고 점토</td>
+<td>0.1 ~ 0.25</td>
+</tr>
+
+<tr>
+<td>매우 견고 점토</td>
+<td>0.25 ~ 0.5</td>
+</tr>
+
+<tr>
+<td>고결 점토</td>
+<td>&gt 0.5</td>
+</tr>
+
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>불연속면 거칠기</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>매우 거칠</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>거칢</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>약간 거칣</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>부드러움</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>미끄러움</td>
+<td>0</td>
+</tr>
+
+</tbody>
+</table>
+
+<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th>불연속면 풍화도</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>신선(Fresh)</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>약간 풍화(SW)</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>보통 풍화(MW)</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>심한 풍화(HW)</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>완전 풍화(CW)</td>
+<td>0</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div-->
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 <!--alert css-->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         // 리스트페이지에서 id 값을 누르면 나오는 상세페이지
@@ -732,13 +781,15 @@
         var result = "<%= id%>";
 
         // 상세페이지 로딩 시 목록 및 수정 버튼 보이기
-        if(result != 0){
+        if (result != 0) {
             // 목록 버튼 보이기
             // 기본으로 display none 설정 되어있음
             $("#btn_select").css("display", "inline-block");
+
+            // 상세페이지에서 select한 값을 라디오버튼에 찍히게 하려면?
             // select 한 결과의 id를 숫자로 변환
-            var id ={
-                "id": Number(result)
+            var id = {
+                id: Number(result),
             };
 
             // JSON 객체를 String 객체로 변환
@@ -752,34 +803,38 @@
                 url: "/select", // select.js
                 data: jsonData,
                 contentType: "application/json",
-                type : "post",
-                success:function(data){
+                type: "post",
+                success: function (data) {
+                    // ajax 통신 성공하면?
+                    // object로 받아온 data를 a에 저장
                     var a = data;
 
                     // 체크된 라디오 버튼 이외의 버튼은 활성화
-                    $('input:radio[id="strength"]:input[value='+a[0].strength+']').attr("checked", true);
-                    $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']').attr("checked", true);
-                    $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']').attr("checked", true);
-                    $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']').attr("checked", true);
-                    $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']').attr("checked", true);
-                    $('input:radio[id="asperity"]:input[value='+a[0].asperity+']').attr("checked", true);
-                    $('input:radio[id="filling"]:input[value='+a[0].filling+']').attr("checked", true);
-                    $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']').attr("checked", true);
-                    $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']').attr("checked", true);
+                    // a에 저장된 data가 배열로 되어 있고 그 중 a[0]에 값이 적혀있기 때문에
+                    $('input:radio[id="strength"]:input[value=' + a[0].strength + "]").attr("checked", true);
+                    $('input:radio[id="coefficient"]:input[value=' + a[0].coefficient + "]").attr("checked", true);
+                    $('input:radio[id="joint_spacing"]:input[value=' + a[0].joint_spacing + "]").attr("checked", true);
+                    $('input:radio[id="joint_length"]:input[value=' + a[0].joint_length + "]").attr("checked", true);
+                    $('input:radio[id="joint_gap"]:input[value=' + a[0].joint_gap + "]").attr("checked", true);
+                    $('input:radio[id="asperity"]:input[value=' + a[0].asperity + "]").attr("checked", true);
+                    $('input:radio[id="filling"]:input[value=' + a[0].filling + "]").attr("checked", true);
+                    $('input:radio[id="weathering_degree"]:input[value=' + a[0].weathering_degree + "]").attr("checked", true);
+                    $('input:radio[id="underground_water"]:input[value=' + a[0].underground_water + "]").attr("checked", true);
 
-                    $('input:radio[id="strength"]:input[value='+a[0].strength+']:checked').attr("disabled", false);
-                    $('input:radio[id="coefficient"]:input[value='+a[0].coefficient+']:checked').attr("disabled", false);
-                    $('input:radio[id="joint_spacing"]:input[value='+a[0].joint_spacing+']:checked').attr("disabled", false);
-                    $('input:radio[id="joint_length"]:input[value='+a[0].joint_length+']:checked').attr("disabled", false);
-                    $('input:radio[id="joint_gap"]:input[value='+a[0].joint_gap+']:checked').attr("disabled", false);
-                    $('input:radio[id="asperity"]:input[value='+a[0].asperity+']:checked').attr("disabled", false);
-                    $('input:radio[id="filling"]:input[value='+a[0].filling+']:checked').attr("disabled", false);
-                    $('input:radio[id="weathering_degree"]:input[value='+a[0].weathering_degree+']:checked').attr("disabled", false);
-                    $('input:radio[id="underground_water"]:input[value='+a[0].underground_water+']:checked').attr("disabled", false);
+                    // 체크된 라디오 버튼은 비활성화
+                    $('input:radio[id="strength"]:input[value=' + a[0].strength + "]:checked").attr("disabled", false);
+                    $('input:radio[id="coefficient"]:input[value=' + a[0].coefficient + "]:checked").attr("disabled", false);
+                    $('input:radio[id="joint_spacing"]:input[value=' + a[0].joint_spacing + "]:checked").attr("disabled", false);
+                    $('input:radio[id="joint_length"]:input[value=' + a[0].joint_length + "]:checked").attr("disabled", false);
+                    $('input:radio[id="joint_gap"]:input[value=' + a[0].joint_gap + "]:checked").attr("disabled", false);
+                    $('input:radio[id="asperity"]:input[value=' + a[0].asperity + "]:checked").attr("disabled", false);
+                    $('input:radio[id="filling"]:input[value=' + a[0].filling + "]:checked").attr("disabled", false);
+                    $('input:radio[id="weathering_degree"]:input[value=' + a[0].weathering_degree + "]:checked").attr("disabled", false);
+                    $('input:radio[id="underground_water"]:input[value=' + a[0].underground_water + "]:checked").attr("disabled", false);
 
                     // 라디오 버튼 클릭 시 css 변경
-                    $('input:checked').parent('td').css("background-color", "#dff0d8");
-                    $('input:checked').parent('td').css("font-weight", "bold");
+                    $("input:checked").parent("td").css("background-color", "#dff0d8");
+                    $("input:checked").parent("td").css("font-weight", "bold");
 
                     // 라디오 버튼 클릭 시 값 가져와 연산
                     var strength = Number($("input:radio[id='strength']:checked").val());
@@ -793,26 +848,30 @@
                     var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
                     // 총점 계산
-                    let sum = (strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water);
+                    let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
                     $("#sum").text(sum);
                 },
-                error: function(err){
-                    alert("데이터 저장에 실패했습니다.");
-                }
+                error: function (err) {
+                    // ajax 통신 실패하면?
+                    Swal.fire("수정 실패!", "수정이 되지 않았습니다!", "error");
+                },
             });
+
             // 수정 버튼 보이기
+            // 기본으로 display none 설정 되어있음
             $("#btn_update").show();
         }
-        // 메인페이지 로딩 시 저장 버튼 보이기
-        if(result == 0){
+
+        // 메인페이지 로딩 시 목록 및 저장 버튼 보이기
+        if (result == 0) {
             $("#btn_save").css("display", "inline-block");
             $("#btn_select").css("display", "inline-block");
         }
 
         // 목록 버튼 hover css
-        $('#btn_select').hover(function () {
-
-            // 마우스 올렸을 때 변경되는 색상
+        $("#btn_select").hover(
+            function () {
+                // 마우스 올렸을 때 변경되는 색상
                 $("#btn_select").css("background-color", "rgb(108, 108, 224)");
                 $("#btn_select").css("border", "1px solid rgb(108, 108, 224)");
             },
@@ -822,116 +881,126 @@
             function () {
                 $("#btn_select").css("background-color", "rgb(153,153,255)");
                 $("#btn_select").css("border", "1px solid rgb(153,153,255)");
-            });
+            }
+        );
 
         // 목록 버튼 클릭 시
         // localhost:3000/list로 페이지 이동
-        $('#btn_select').click(function(){
-            location.href="/list";
+        $("#btn_select").click(function () {
+            location.href = "/list";
         });
 
-
-
         // 라디오 버튼 클릭 시
-        $('input').click(function () {
+        $("input").click(function () {
 
-            // 라디오 버튼을 입력 하지 않을 시 css 초기화
-            $('input').parent('td').css("background-color", "");
-            $('input').parent('td').css("font-weight", "");
+            // r_test 입력 시 모든 항목을 체크해주세요가 발생하는 것을 방지
+             var cls = $(this).attr("class");
+             if(cls != "r_test" || cls != "c_test") {
+                 // 라디오 버튼을 입력 하지 않을 시 css 초기화
+                 $("input").parent("td").css("background-color", "");
+                 $("input").parent("td").css("font-weight", "");
 
-            // 라디오 버튼 클릭 시 css 변경
-            $('input:checked').parent('td').css("background-color", "#dff0d8");
-            $('input:checked').parent('td').css("font-weight", "bold");
+                 // 라디오 버튼 클릭 시 css 변경
+                 $("input:checked").parent("td").css("background-color", "#dff0d8");
+                 $("input:checked").parent("td").css("font-weight", "bold");
 
-            // 라디오 버튼 클릭 시 값 가져와 연산
-            var strength = Number($("input:radio[id='strength']:checked").val());
-            var coefficient = Number($("input:radio[id='coefficient']:checked").val());
-            var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
-            var joint_length = Number($("input:radio[id='joint_length']:checked").val());
-            var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
-            var asperity = Number($("input:radio[id='asperity']:checked").val());
-            var filling = Number($("input:radio[id='filling']:checked").val());
-            var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
-            var underground_water = Number($("input:radio[id='underground_water']:checked").val());
+                 // 라디오 버튼 클릭 시 값 가져와 연산
+                 var strength = Number($("input:radio[id='strength']:checked").val());
+                 var coefficient = Number($("input:radio[id='coefficient']:checked").val());
+                 var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
+                 var joint_length = Number($("input:radio[id='joint_length']:checked").val());
+                 var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
+                 var asperity = Number($("input:radio[id='asperity']:checked").val());
+                 var filling = Number($("input:radio[id='filling']:checked").val());
+                 var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
+                 var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-            // 총점 계산
-            let sum = (strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water);
+                 // 총점 계산
+                 let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
 
-            // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
-            if (isNaN(sum)) { // sum의 값이 숫자가 아니면 true 반환
-                $("#sum").text("모든 항목을 체크해주세요");
+                 // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
+                 if (isNaN(sum)) {
+                     // sum의 값이 숫자가 아니면 true 반환
+                     $("#sum").text("모든 항목을 체크해주세요");
 
-                // 항목을 전부 체크 시 값 가져와 연산하기 (총점)
-            } else { // sum의 값이 숫자이면 false 반환
-                $("#sum").text(sum);
-            }
+                     // 항목을 전부 체크 시 값 가져와 연산하기 (총점)
+                 } else {
+                     // sum의 값이 숫자이면 false 반환
+                     $("#sum").text(sum);
+                 }
+             }
         });
 
         // 수정 버튼 클릭 시
-        $('#btn_update').click(function () {
-
+        $("#btn_update").click(function () {
             // 리스트페이지에서 id 값을 누르면 나오는 상세페이지
-            // select 한 결과를 상세페이지에 넘기기
+            // 상세페이지에서 select한 값을 라디오버튼에 찍히게 하려면?
+            // select 한 결과의 id를 숫자로 변환
             var result = "<%= id%>";
             result = Number(result);
 
-                // 라디오 버튼 클릭 시 값
-                var strength = Number($("input:radio[id='strength']:checked").val());
-                var coefficient = Number($("input:radio[id='coefficient']:checked").val());
-                var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
-                var joint_length = Number($("input:radio[id='joint_length']:checked").val());
-                var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
-                var asperity = Number($("input:radio[id='asperity']:checked").val());
-                var filling = Number($("input:radio[id='filling']:checked").val());
-                var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
-                var underground_water = Number($("input:radio[id='underground_water']:checked").val());
+            // 라디오 버튼 클릭 시 값
+            var strength = Number($("input:radio[id='strength']:checked").val());
+            var coefficient = Number($("input:radio[id='coefficient']:checked").val());
+            var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
+            var joint_length = Number($("input:radio[id='joint_length']:checked").val());
+            var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
+            var asperity = Number($("input:radio[id='asperity']:checked").val());
+            var filling = Number($("input:radio[id='filling']:checked").val());
+            var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
+            var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-                // 라디오 버튼 선택했을 때 값 가져와 객체에 담기
-                    let rmr = {
-                        "strength": strength,
-                        'coefficient': coefficient,
-                        'joint_spacing': joint_spacing,
-                        'joint_length': joint_length,
-                        'joint_gap': joint_gap,
-                        'asperity': asperity,
-                        'filling': filling,
-                        'weathering_degree': weathering_degree,
-                        'underground_water': underground_water,
-                        'id': result
-                    };
+            // 라디오 버튼 선택했을 때 값 가져와 객체에 담기
+            let rmr = {
+                strength: strength,
+                coefficient: coefficient,
+                joint_spacing: joint_spacing,
+                joint_length: joint_length,
+                joint_gap: joint_gap,
+                asperity: asperity,
+                filling: filling,
+                weathering_degree: weathering_degree,
+                underground_water: underground_water,
+                id: result,
+            };
 
-                    // JSON 객체를 String 객체로 변환
-                    // value 데이터 타입이 string일 경우, 그 값 자체가 string
-                    // value 데이터 타입이 배열일 경우, 그 배열 자체가 string
-                    var jsonData = JSON.stringify(rmr);
+            // JSON 객체를 String 객체로 변환
+            // value 데이터 타입이 string일 경우, 그 값 자체가 string
+            // value 데이터 타입이 배열일 경우, 그 배열 자체가 string
+            var jsonData = JSON.stringify(rmr);
 
-                    // 비동기통신으로 데이터 주고받기
-                    $.ajax({
-                        url: "/update", // update.js
-                        type: "post",
-                        data: jsonData,
-                        contentType: "application/json",
-                        success: function (data) {
-                            Swal.fire(
-                                '수정 완료!',
-                                '수정이 완료되었습니다!',
-                                'success'
-                            )
-                        },
-                        error: function (err) {
-                            Swal.fire(
-                                '수정 실패!',
-                                '수정이 되지 않았습니다.',
-                                'success'
-                            )
-                        }
-                    });
-                });
+            // 비동기통신으로 데이터 주고받기
+            $.ajax({
+                url: "/update", // update.js
+                type: "post",
+                data: jsonData,
+                contentType: "application/json",
+                success: function (data) {
+                    Swal.fire("수정 완료!", "수정이 완료되었습니다!", "success");
+                },
+                error: function (err) {
+                    Swal.fire("수정 실패!", "수정이 되지 않았습니다.", "error");
+                },
+            });
+        });
+
+        // 모든 항목을 입력하지 않고 저장 버튼 클릭 시
+        // 라디오 버튼 클릭 시 css 초기화
+        $("input").click(function () {
+            // 상세페이지에서 select한 값을 라디오버튼에 찍히게 하려면?
+            // select 한 결과의 id를 숫자로 변환
+            var result = "<%= id%>";
+            result = Number(result);
+
+            // 상세페이지가 아닌 저장(메인)페이지에서만 이 이벤트가 발생하게 조건을 넣는다.
+            // 추 후 css 충돌을 막기 위한 방책
+            if (result == 0) {
+                $(this).parent("td").parent("tr").children("td").css("border", "1px solid black");
+            }
+        });
 
         // 저장 버튼 클릭 시
-        $('#btn_save').click(function () {
-            console.log("집 가고 싶다");
-
+        $("#btn_save").click(function () {
             // 라디오 버튼 클릭 시 값 가져와 연산
             var strength = Number($("input:radio[id='strength']:checked").val());
             var coefficient = Number($("input:radio[id='coefficient']:checked").val());
@@ -943,26 +1012,66 @@
             var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
             var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-            let sum = (strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water);
+            let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
 
             // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
-            if (isNaN(sum)) { // sum의 값이 숫자가 아니면 true 반환
-                alert("모든 항목을 체크해주세요.");
+            if (isNaN(sum)) {
+                // sum의 값이 숫자가 아니면 true 반환
+                swal("에러!", "모든 항목을 체크해주세요!", "error");
+
+                // 체크하지 않은 항목의 테두리를 색상으로 알려줌
+                if (isNaN(strength)) {
+                    $("input:radio[id='strength']").parent("td").css("border", "2px solid red");
+                }
+
+                if (isNaN(coefficient)) {
+                    $("input:radio[id='coefficient']").parent("td").css("border", "2px solid red");
+                }
+
+                if (isNaN(joint_spacing)) {
+                    $("input:radio[id='joint_spacing']").parent("td").css("border", "2px solid red");
+                }
+
+                if (isNaN(joint_length)) {
+                    $("input:radio[id='joint_length']").parent("td").css("border", "2px solid red");
+                }
+
+                if (isNaN(joint_gap)) {
+                    $("input:radio[id='joint_gap']").parent("td").css("border", "2px solid red");
+                }
+
+                if (isNaN(asperity)) {
+                    $("input:radio[id='asperity']").parent("td").css("border", "2px solid red");
+                }
+
+                if (isNaN(filling)) {
+                    $("input:radio[id='filling']").parent("td").css("border", "2px solid red");
+                }
+
+                if (isNaN(weathering_degree)) {
+                    $("input:radio[id='weathering_degree']").parent("td").css("border", "2px solid red");
+                }
+
+                if (isNaN(underground_water)) {
+                    $("input:radio[id='underground_water']").parent("td").css("border", "2px solid red");
+                }
 
                 // 항목을 전부 체크 시 값 가져와 연산하기 (총점)
-            } else { // sum의 값이 숫자이면 false 반환
+            } else {
+                // sum의 값이 숫자이면 false 반환
+                $("#sum").text(sum);
 
                 // 라디오 버튼 선택했을 때 값 가져오기
                 let rmr = {
-                    "strength": strength,
-                    'coefficient': coefficient,
-                    'joint_spacing': joint_spacing,
-                    'joint_length': joint_length,
-                    'joint_gap': joint_gap,
-                    'asperity': asperity,
-                    'filling': filling,
-                    'weathering_degree': weathering_degree,
-                    'underground_water': underground_water
+                    strength: strength,
+                    coefficient: coefficient,
+                    joint_spacing: joint_spacing,
+                    joint_length: joint_length,
+                    joint_gap: joint_gap,
+                    asperity: asperity,
+                    filling: filling,
+                    weathering_degree: weathering_degree,
+                    underground_water: underground_water,
                 };
 
                 var jsonData = JSON.stringify(rmr);
@@ -975,16 +1084,14 @@
                     data: jsonData,
                     contentType: "application/json",
                     success: function (data) {
-                        console.log(data);
-                        alert("저장되었습니다!");
+                        Swal.fire("저장 완료!", "저장이 완료되었습니다!", "success");
                     },
                     error: function (err) {
-                        alert("데이터 저장에 실패했습니다.");
-                    }
+                        Swal.fire("저장 실패!", "저장이 되지 않았습니다!", "error");
+                    },
                 });
             }
         });
     });
-
 </script>
 </html>
