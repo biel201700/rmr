@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Bootstrap Admin App" />
-    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content="Bootstrap Admin App"/>
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin"/>
     <!--    <link rel="icon" type="image/x-icon" href="favicon.ico">-->
 
     <!--favicon 설정-->
-    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
     <title>Biel 암판정</title>
     <!-- =============== VENDOR STYLES ===============-->
     <!-- FONT AWESOME-->
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/brands.css" />
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/regular.css" />
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/solid.css" />
-    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/fontawesome.css" />
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/brands.css"/>
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/regular.css"/>
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/solid.css"/>
+    <link rel="stylesheet" href="vendor/@fortawesome/fontawesome-free/css/fontawesome.css"/>
     <!-- SIMPLE LINE ICONS-->
-    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css" />
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css"/>
     <!-- ANIMATE.CSS-->
-    <link rel="stylesheet" href="vendor/animate.css/animate.css" />
+    <link rel="stylesheet" href="vendor/animate.css/animate.css"/>
     <!-- WHIRL (spinners)-->
-    <link rel="stylesheet" href="vendor/whirl/dist/whirl.css" />
+    <link rel="stylesheet" href="vendor/whirl/dist/whirl.css"/>
     <!-- =============== PAGE VENDOR STYLES ===============-->
     <!-- WEATHER ICONS-->
-    <link rel="stylesheet" href="vendor/weather-icons/css/weather-icons.css" />
+    <link rel="stylesheet" href="vendor/weather-icons/css/weather-icons.css"/>
     <!-- =============== BOOTSTRAP STYLES ===============-->
-    <link rel="stylesheet" href="css/bootstrap.css" id="bscss" />
+    <link rel="stylesheet" href="css/bootstrap.css" id="bscss"/>
     <!-- =============== APP STYLES ===============-->
-    <link rel="stylesheet" href="css/app.css" id="maincss" />
+    <link rel="stylesheet" href="css/app.css" id="maincss"/>
     <!--button css 설정-->
-    <link rel="stylesheet" href="css/rmr.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/rmr.css"/>
+    <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">-->
 </head>
 <body>
 <!--modal-->
@@ -39,15 +39,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">실습</h5>
+                <h1 class="modal-title" id="exampleModalLabel">MODAL_TEST</h1>
             </div>
             <div class="modal-body">
-                <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="15" class="num" />15</td>
-                <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="12" class="num" />12</td>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">닫기</button>
             </div>
         </div>
     </div>
@@ -61,16 +58,19 @@
         <div class="ml-auto">
             <!--<div class="btn-group"><button class="btn btn-secondary dropdown-toggle dropdown-toggle-nocaret" type="button" data-toggle="dropdown">English</button>-->
             <div class="dropdown-menu dropdown-menu-right-forced animated fadeInUpShort" role="menu">
-                <a class="dropdown-item" href="#" data-set-lang="en">English</a><a class="dropdown-item" href="#" data-set-lang="es">Spanish</a>
+                <a class="dropdown-item" href="#" data-set-lang="en">English</a><a class="dropdown-item" href="#"
+                                                                                   data-set-lang="es">Spanish</a>
             </div>
         </div>
         <!-- <button class="mb-1 btn btn-primary" data-toggle="modal" data-target="#newDeviceModal" type="button">새 장비 추가</button> -->
-        <!--        button 추가-->
+        <!-- button 추가-->
         <button class="mb-1 btn btn-primary" id="btn_select">목록</button>
         <button class="mb-1 btn btn-danger" id="btn_save">저장</button>
         <button class="mb-1 btn btn-warning" id="btn_update">수정</button>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">모달</button>
+        <button type="button" class="btn btn-primary" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            TEST MODAL
+        </button>
     </div>
     <!-- END Language list-->
     <div class="row">
@@ -100,11 +100,21 @@
                 </tr>
                 <tr>
                     <td>일축압축강도 (㎏/㎠)</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="15" class="num" />&gt 2500</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="12" class="num" />2500 - 1000</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="7" class="num" />1000 - 500</td>
-                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="4" class="num" />500 - 250</td>
-                    <td colspan="3" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="2" class="num" />&lt 250</td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="15"
+                                                      class="num"/>&gt 2500
+                    </td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="12"
+                                                      class="num"/>2500 - 1000
+                    </td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="7"
+                                                      class="num"/>1000 - 500
+                    </td>
+                    <td colspan="2" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="4"
+                                                      class="num"/>500 - 250
+                    </td>
+                    <td colspan="3" class="ss"><input type="radio" name="cellcolorchange1" id="strength" value="2"
+                                                      class="num"/>&lt 250
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -116,14 +126,24 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        ②<br />
+                        ②<br/>
                         암질계수(%)
                     </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="20" class="num" />90-100</td>
-                    <td colspan="2 "><input type="radio" name="cellcolorchange2" id="coefficient" value="17" class="num" />75 - 90</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="13" class="num" />50 - 75</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="8" class="num" />25 - 50</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange2" id="coefficient" value="3" class="num" />&lt 25</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="20"
+                                           class="num"/>90-100
+                    </td>
+                    <td colspan="2 "><input type="radio" name="cellcolorchange2" id="coefficient" value="17"
+                                            class="num"/>75 - 90
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="13"
+                                           class="num"/>50 - 75
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange2" id="coefficient" value="8" class="num"/>25
+                        - 50
+                    </td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange2" id="coefficient" value="3" class="num"/>&lt
+                        25
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -135,14 +155,24 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        ③<br />
+                        ③<br/>
                         절리면 간격
                     </td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="20" class="num" />&gt 2m</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="15" class="num" />0.6 ~ 2m</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="10" class="num" />600~200mm</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="8" class="num" />60~200mm</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="5" class="num" />&lt 60mm</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="20"
+                                           class="num"/>&gt 2m
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="15"
+                                           class="num"/>0.6 ~ 2m
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="10"
+                                           class="num"/>600~200mm
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="8"
+                                           class="num"/>60~200mm
+                    </td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange3" id="joint_spacing" value="5"
+                                           class="num"/>&lt 60mm
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -154,15 +184,25 @@
                 </tr>
                 <tr>
                     <td rowspan="10">
-                        ④<br />
+                        ④<br/>
                         불연속면의 상태
                     </td>
                     <td>절리길이</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="6" class="num" />1m 미만</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="4" class="num" />1~3m</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="2" class="num" />3~10m</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="1" class="num" />10~20m</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange4" id="joint_length" value="0" class="num" />20m이상</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="6"
+                                           class="num"/>1m 미만
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="4"
+                                           class="num"/>1~3m
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="2"
+                                           class="num"/>3~10m
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange4" id="joint_length" value="1"
+                                           class="num"/>10~20m
+                    </td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange4" id="joint_length" value="0"
+                                           class="num"/>20m이상
+                    </td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -174,11 +214,17 @@
                 </tr>
                 <tr>
                     <td>절리틈새</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="6" class="num" />없음</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="5" class="num" />0.1mm이하</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="4" class="num" />0.1~1.0mm</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="1" class="num" />1~5mm</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange5" id="joint_gap" value="0" class="num" />5mm 이상</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="6" class="num"/>없음
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="5" class="num"/>0.1mm이하
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="4" class="num"/>0.1~1.0mm
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange5" id="joint_gap" value="1" class="num"/>1~5mm
+                    </td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange5" id="joint_gap" value="0" class="num"/>5mm
+                        이상
+                    </td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -190,11 +236,18 @@
                 </tr>
                 <tr>
                     <td>거칠기</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="6" class="num" />아주 거침</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="4" class="num" />거침</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num" />약간 거침</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num" />평탄</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange6" id="asperity" value="0" class="num" />평면</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="6" class="num"/>아주
+                        거침
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="4" class="num"/>거침
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num"/>약간
+                        거침
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange6" id="asperity" value="2" class="num"/>평탄
+                    </td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange6" id="asperity" value="0" class="num"/>평면
+                    </td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -206,11 +259,20 @@
                 </tr>
                 <tr>
                     <td>충전물</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="6" class="num" />없음</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="5" class="num" />경질 &lt 5</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="3" class="num" />경질 &gt 5</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="1" class="num" />연질 &lt 5</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange7" id="filling" value="0" class="num" />연질 &gt 5</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="6" class="num"/>없음
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="5" class="num"/>경질
+                        &lt 5
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="3" class="num"/>경질
+                        &gt 5
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange7" id="filling" value="1" class="num"/>연질
+                        &lt 5
+                    </td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange7" id="filling" value="0" class="num"/>연질
+                        &gt 5
+                    </td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -222,11 +284,21 @@
                 </tr>
                 <tr>
                     <td>풍화도</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="6" class="num" />신선</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="5" class="num" />약간 풍화</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="3" class="num" />보통</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="1" class="num" />심한 풍화</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="0" class="num" />완전 분해</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="6"
+                                           class="num"/>신선
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="5"
+                                           class="num"/>약간 풍화
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="3"
+                                           class="num"/>보통
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="1"
+                                           class="num"/>심한 풍화
+                    </td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange8" id="weathering_degree" value="0"
+                                           class="num"/>완전 분해
+                    </td>
                 </tr>
                 <tr>
                     <td>평점</td>
@@ -238,7 +310,7 @@
                 </tr>
                 <tr>
                     <td rowspan="2" class="water">
-                        ⑤<br />
+                        ⑤<br/>
                         지하수
                     </td>
                     <td>일반적인 상태</td>
@@ -250,11 +322,21 @@
                 </tr>
                 <tr>
                     <td>10m당 유입량(ℓ/min)</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="15" class="num" />없음</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="10" class="num" />10미만</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="7" class="num" />10~25</td>
-                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="4" class="num" />25~125</td>
-                    <td colspan="3"><input type="radio" name="cellcolorchange9" id="underground_water" value="0" class="num" />125초과</td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="15"
+                                           class="num"/>없음
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="10"
+                                           class="num"/>10미만
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="7"
+                                           class="num"/>10~25
+                    </td>
+                    <td colspan="2"><input type="radio" name="cellcolorchange9" id="underground_water" value="4"
+                                           class="num"/>25~125
+                    </td>
+                    <td colspan="3"><input type="radio" name="cellcolorchange9" id="underground_water" value="0"
+                                           class="num"/>125초과
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">평점</td>
@@ -266,7 +348,7 @@
                 </tr>
                 <tr>
                     <td rowspan="4">
-                        ⑤<br />
+                        ⑤<br/>
                         절리방향에 따른 보정
                     </td>
                     <td>주향</td>
@@ -333,24 +415,37 @@
                     <td colspan="3"></td>
                 </tr>
             </table>
-            <table>
-                <button type="submit" class="btn btn-success" style="float: right;">모달에 값 전달</button>
-            <tr>
-                <td>연령별</td>
-                <td><input type="radio" class="r_test" value="10대">10대</td>
-                <td><input type="radio" class="r_test" value="20대">20대</td>
-                <td><input type="radio" class="r_test" value="30대">30대</td>
-                <td><input type="radio" class="r_test" value="40대">40대</td>
-                <td><input type="radio" class="r_test" value="50대">50대</td>
-            </tr>
-                <td>연령별</td>
-                <td><input type="checkbox" class="c_test">10대</td>
-                <td> <input type="checkbox" class="c_test">20대</td>
-                <td><input type="checkbox" class="c_test">30대</td>
+            <form>
+                <!--radiobutton-->
+                <span class="input_style">radio button</span><br>
+                <input type="radio" class="r_test" name="ra" id="ra" value="10"> 10대
+                <input type="radio" class="r_test" name="ra" id="ra" value="20"> 20대
+                <input type="radio" class="r_test" name="ra" id="ra" value="30"> 30대
+                <br><br>
+                <!--checkboxbutton-->
+                <span class="input_style">checkbox</span><br>
+                <input type="checkbox" class="r_test" id="chk" value="10"> 10대
+                <input type="checkbox" class="r_test" id="chk" value="20"> 20대
+                <input type="checkbox" class="r_test" id="chk" value="30"> 30대
+                <br><br>
+                <!--editbox-->
+                <span class="input_style">editbox</span><br>
+                <input type="text" class="r_test" id="ex_edit" placeholder="문자를 입력해주세요">
+                <br><br>
+                <!--range-->
+                <span class="input_style">range</span><br>
+                <div>
+                    <label style="color: #005cbf; font-size: 30px; font-style: italic"> Value : </label>
+                    <span id="value1" style="color: #005cbf; font-size: 30px; font-style: italic"></span>
+                    <br>
+                    <font size="2" id="slider_value_view">0</font>
+                    <input type="range" class="r_test" value="0" min="0" max="1000" step="5" id="range_num"
+                           style="width:80%;"
+                           oninput="document.getElementById('value1').innerHTML=this.value;">
+                    <font size="2" id="slider_value_view">1000</font>
+                </div>
+            </form>
 
-
-
-            </table>
         </div>
     </div>
     <!--div class="row">
@@ -768,17 +863,22 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
 <!--alert css-->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
+
     $(document).ready(function () {
         // 리스트페이지에서 id 값을 누르면 나오는 상세페이지
         // select 한 결과를 상세페이지에 넘기기
         // index.js에서 받아온 id값
-        var result = "<%= id%>";
+        var result = "<%= id %>";
 
         // 상세페이지 로딩 시 목록 및 수정 버튼 보이기
         if (result != 0) {
@@ -894,41 +994,41 @@
         $("input").click(function () {
 
             // r_test 입력 시 모든 항목을 체크해주세요가 발생하는 것을 방지
-             var cls = $(this).attr("class");
-             if(cls != "r_test" || cls != "c_test") {
-                 // 라디오 버튼을 입력 하지 않을 시 css 초기화
-                 $("input").parent("td").css("background-color", "");
-                 $("input").parent("td").css("font-weight", "");
+            var cls = $(this).attr("class");
+            if (cls != "r_test") {
+                // 라디오 버튼을 입력 하지 않을 시 css 초기화
+                $("input").parent("td").css("background-color", "");
+                $("input").parent("td").css("font-weight", "");
 
-                 // 라디오 버튼 클릭 시 css 변경
-                 $("input:checked").parent("td").css("background-color", "#dff0d8");
-                 $("input:checked").parent("td").css("font-weight", "bold");
+                // 라디오 버튼 클릭 시 css 변경
+                $("input:checked").parent("td").css("background-color", "#dff0d8");
+                $("input:checked").parent("td").css("font-weight", "bold");
 
-                 // 라디오 버튼 클릭 시 값 가져와 연산
-                 var strength = Number($("input:radio[id='strength']:checked").val());
-                 var coefficient = Number($("input:radio[id='coefficient']:checked").val());
-                 var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
-                 var joint_length = Number($("input:radio[id='joint_length']:checked").val());
-                 var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
-                 var asperity = Number($("input:radio[id='asperity']:checked").val());
-                 var filling = Number($("input:radio[id='filling']:checked").val());
-                 var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
-                 var underground_water = Number($("input:radio[id='underground_water']:checked").val());
+                // 라디오 버튼 클릭 시 값 가져와 연산
+                var strength = Number($("input:radio[id='strength']:checked").val());
+                var coefficient = Number($("input:radio[id='coefficient']:checked").val());
+                var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
+                var joint_length = Number($("input:radio[id='joint_length']:checked").val());
+                var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
+                var asperity = Number($("input:radio[id='asperity']:checked").val());
+                var filling = Number($("input:radio[id='filling']:checked").val());
+                var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
+                var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-                 // 총점 계산
-                 let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
+                // 총점 계산
+                let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
 
-                 // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
-                 if (isNaN(sum)) {
-                     // sum의 값이 숫자가 아니면 true 반환
-                     $("#sum").text("모든 항목을 체크해주세요");
+                // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
+                if (isNaN(sum)) {
+                    // sum의 값이 숫자가 아니면 true 반환
+                    $("#sum").text("모든 항목을 체크해주세요");
 
-                     // 항목을 전부 체크 시 값 가져와 연산하기 (총점)
-                 } else {
-                     // sum의 값이 숫자이면 false 반환
-                     $("#sum").text(sum);
-                 }
-             }
+                    // 항목을 전부 체크 시 값 가져와 연산하기 (총점)
+                } else {
+                    // sum의 값이 숫자이면 false 반환
+                    $("#sum").text(sum);
+                }
+            }
         });
 
         // 수정 버튼 클릭 시
@@ -936,7 +1036,7 @@
             // 리스트페이지에서 id 값을 누르면 나오는 상세페이지
             // 상세페이지에서 select한 값을 라디오버튼에 찍히게 하려면?
             // select 한 결과의 id를 숫자로 변환
-            var result = "<%= id%>";
+            var result = "<%= id %>";
             result = Number(result);
 
             // 라디오 버튼 클릭 시 값
@@ -989,7 +1089,7 @@
         $("input").click(function () {
             // 상세페이지에서 select한 값을 라디오버튼에 찍히게 하려면?
             // select 한 결과의 id를 숫자로 변환
-            var result = "<%= id%>";
+            var result = "<%= id %>";
             result = Number(result);
 
             // 상세페이지가 아닌 저장(메인)페이지에서만 이 이벤트가 발생하게 조건을 넣는다.
@@ -1090,6 +1190,53 @@
                         Swal.fire("저장 실패!", "저장이 되지 않았습니다!", "error");
                     },
                 });
+            }
+        });
+
+        // 모달이 열렸을때 이벤트
+        $(document).on('show.bs.modal', '#exampleModal', function () {
+
+            // 체크한 것을 초기화
+            $(".modal-body").empty();
+
+            // 체크된 항목의 값을 가져와라
+            var ra = $("input:radio[id='ra']:checked").val();
+            var chk = $("input:checkbox[id='chk']:checked").val();
+            var ex_edit = $('#ex_edit').val();
+            var range_num = $('#range_num').val();
+
+            // 모달 창에 값을 띄워주기
+            if (ra != undefined && chk != undefined && ex_edit != undefined) {
+                $(".modal-body").append("<h4>" + "라디오버튼의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:radio[id='ra']:checked").val() + "대" + "</h2>" + "<br>");
+                $(".modal-body").append("<h4>" + "체크박스의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:checkbox[id='chk']:checked").val() + "대" + "</h2>" + "<br>");
+                $(".modal-body").append("<h4>" + "에디터박스의 값은?" + "</<h4>" + "<br>" + "<h2>" + ex_edit + "</h2>" + "<br>");
+                $(".modal-body").append("<h4>" + "range의 값은?" + "</<h4>" + "<br>" + "<h2>" + range_num + "</h2>");
+
+                // 값 유지
+                // session
+                // session 특징 : 웹 서버에 정보를 저장, 브라우저를 닫거나 서버에서 세션을 삭제했을 때만 삭제가 됨
+                // 사용 예시 : 화면이 이동해도 브라우저를 닫지 않으면 계속 유지
+                // 세션 저장
+                sessionStorage.setItem("ra", ra);
+                sessionStorage.setItem("chk", chk);
+                sessionStorage.setItem("ex_edit", ex_edit);
+                sessionStorage.setItem("range_num", range_num);
+
+                console.log(sessionStorage);
+                // 세션이 저장되었다면?
+                if (sessionStorage.length != 0) {
+                    // 세션에서 값 가져오기
+                    sessionStorage.getItem("ra");
+                    sessionStorage.getItem("chk");
+                    sessionStorage.getItem("ex_edit");
+                    sessionStorage.getItem("range_num");
+                }
+                // 세션에 저장된 내용이 없다면?
+                if (sessionStorage.length == 0) {
+                    alert("세션값 아무것도 없어요");
+                } else { // 체크된 값이 없다면?
+                    $(".modal-body").append(`<h4>모든 항목을 체크해주세요!</h4>`);
+                }
             }
         });
     });
