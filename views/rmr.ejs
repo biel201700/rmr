@@ -418,19 +418,19 @@
             <form>
                 <!--radiobutton-->
                 <span class="input_style">radio button</span><br>
-                <input type="radio" class="r_test" name="ra" id="ra" value="10"> 10대
-                <input type="radio" class="r_test" name="ra" id="ra" value="20"> 20대
-                <input type="radio" class="r_test" name="ra" id="ra" value="30"> 30대
+                <input type="radio" class="r_test" name="ra_btn" id="ra_btn" value="10"> 10대
+                <input type="radio" class="r_test" name="ra_btn" id="ra_btn" value="20"> 20대
+                <input type="radio" class="r_test" name="ra_btn" id="ra_btn" value="30"> 30대
                 <br><br>
                 <!--checkboxbutton-->
                 <span class="input_style">checkbox</span><br>
-                <input type="checkbox" class="r_test" id="chk" value="10"> 10대
-                <input type="checkbox" class="r_test" id="chk" value="20"> 20대
-                <input type="checkbox" class="r_test" id="chk" value="30"> 30대
+                <input type="checkbox" class="r_test" id="chk_btn" value="10"> 10대
+                <input type="checkbox" class="r_test" id="chk_btn" value="20"> 20대
+                <input type="checkbox" class="r_test" id="chk_btn" value="30"> 30대
                 <br><br>
                 <!--editbox-->
                 <span class="input_style">editbox</span><br>
-                <input type="text" class="r_test" id="ex_edit" style="width:80%;" placeholder="문자를 입력해주세요">
+                <input type="text" class="r_test" id="ex_edit" style="width:80%;" placeholder="숫자를 입력해주세요">
                 <br><br>
                 <!--range-->
                 <span class="input_style">range</span><br>
@@ -872,6 +872,8 @@
 <!--alert css-->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--pdf-->
+<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -1101,6 +1103,14 @@
 
         // 저장 버튼 클릭 시
         $("#btn_save").click(function () {
+
+            // 체크된 항목의 값을 가져와라
+            var ra_btn = Number($("input:radio[id='ra_btn']:checked").val());
+            var chk_btn = Number($("input:checkbox[id='chk_btn']:checked").val());
+            var ex_edit = Number($('#ex_edit').val());
+            var range_num = Number($('#range_num').val());
+
+
             // 라디오 버튼 클릭 시 값 가져와 연산
             var strength = Number($("input:radio[id='strength']:checked").val());
             var coefficient = Number($("input:radio[id='coefficient']:checked").val());
@@ -1112,12 +1122,16 @@
             var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
             var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-            let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
+            let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water+ra_btn+chk_btn+ex_edit+range_num;
 
             // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
             if (isNaN(sum)) {
                 // sum의 값이 숫자가 아니면 true 반환
                 swal("에러!", "모든 항목을 체크해주세요!", "error");
+
+                if(isNaN(ex_edit)){
+                    swal("에러!","숫자만 입력해주세요!","error");
+                }
 
                 // 체크하지 않은 항목의 테두리를 색상으로 알려줌
                 if (isNaN(strength)) {
@@ -1172,9 +1186,15 @@
                     filling: filling,
                     weathering_degree: weathering_degree,
                     underground_water: underground_water,
+                    ra_btn: ra_btn,
+                    chk_btn: chk_btn,
+                    ex_edit: ex_edit,
+                    range_num: range_num
                 };
 
                 var jsonData = JSON.stringify(rmr);
+
+                console.log(jsonData);
                 // console.log(jsonData);
 
                 // 비동기통신으로 데이터 주고받기
@@ -1200,45 +1220,38 @@
             $(".modal-body").empty();
 
             // 체크된 항목의 값을 가져와라
-            var ra = $("input:radio[id='ra']:checked").val();
-            var chk = $("input:checkbox[id='chk']:checked").val();
-            var ex_edit = $('#ex_edit').val();
-            var range_num = $('#range_num').val();
+            var ra_btn = Number($("input:radio[id='ra_btn']:checked").val());
+            var chk_btn = Number($("input:checkbox[id='chk_btn']:checked").val());
+            var ex_edit = Number($('#ex_edit').val());
+            var range_num = Number($('#range_num').val());
 
+            $.ajax({
+                url: "/insert",
+                type: "post",
+                data: jsonData,
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    Swal.fire("저장 완료!", "저장이 완료되었습니다!", "success");
+                },
+                error: function (err) {
+                    Swal.fire("저장 실패!", "저장이 되지 않았습니다!", "error");
+                },
+            });
             // 모달 창에 값을 띄워주기
-            if (ra != undefined && chk != undefined && ex_edit != undefined) {
-                $(".modal-body").append("<h4>" + "라디오버튼의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:radio[id='ra']:checked").val() + "대" + "</h2>" + "<br>");
-                $(".modal-body").append("<h4>" + "체크박스의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:checkbox[id='chk']:checked").val() + "대" + "</h2>" + "<br>");
+            if (ra_btn != undefined && chk_btn != undefined && ex_edit != undefined && range_num != undefined) {
+                $(".modal-body").append("<h4>" + "라디오버튼의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:radio[id='ra_btn']:checked").val() + "대" + "</h2>" + "<br>");
+                $(".modal-body").append("<h4>" + "체크박스의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:checkbox[id='chk_btn']:checked").val() + "대" + "</h2>" + "<br>");
                 $(".modal-body").append("<h4>" + "에디터박스의 값은?" + "</<h4>" + "<br>" + "<h2>" + ex_edit + "</h2>" + "<br>");
                 $(".modal-body").append("<h4>" + "range의 값은?" + "</<h4>" + "<br>" + "<h2>" + range_num + "</h2>");
 
-                // 값 유지
-                // session
-                // session 특징 : 웹 서버에 정보를 저장, 브라우저를 닫거나 서버에서 세션을 삭제했을 때만 삭제가 됨
-                // 사용 예시 : 화면이 이동해도 브라우저를 닫지 않으면 계속 유지
-                // 세션 저장
-                sessionStorage.setItem("ra", ra);
-                sessionStorage.setItem("chk", chk);
-                sessionStorage.setItem("ex_edit", ex_edit);
-                sessionStorage.setItem("range_num", range_num);
-
-                console.log(sessionStorage);
-                // 세션이 저장되었다면?
-                if (sessionStorage.length != 0) {
-                    // 세션에서 값 가져오기
-                    sessionStorage.getItem("ra");
-                    sessionStorage.getItem("chk");
-                    sessionStorage.getItem("ex_edit");
-                    sessionStorage.getItem("range_num");
-                }
-                // 세션에 저장된 내용이 없다면?
-                if (sessionStorage.length == 0) {
-                    alert("세션값 아무것도 없어요");
-                } else { // 체크된 값이 없다면?
-                    $(".modal-body").append(`<h4>모든 항목을 체크해주세요!</h4>`);
-                }
+                // 체크된 값이 없다면?
+                } else {
+                $(".modal-body").append(`<h4>모든 항목을 체크해주세요!</h4>`);
             }
         });
+
+
     });
 </script>
 </html>

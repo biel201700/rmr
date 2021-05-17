@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "ejs": "^2.6.2",
@@ -13,7 +14,8 @@
     "http-errors": "^1.6.3",
     "jquery": "^3.6.0",
     "morgan": "^1.9.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "pdf-lib": "^1.16.0"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2"
+  }
 }
