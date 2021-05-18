@@ -7,7 +7,7 @@
     <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin"/>
     <!--    <link rel="icon" type="image/x-icon" href="favicon.ico">-->
 
-    <!--favicon 설정-->
+    <!--Biel favicon 설정-->
     <link rel="shortcut icon" href="/images/favicon.ico"/>
     <title>Biel 암판정</title>
     <!-- =============== VENDOR STYLES ===============-->
@@ -417,35 +417,34 @@
             </table>
             <form>
                 <!--radiobutton-->
-                <span class="input_style">radio button</span><br>
-                <input type="radio" class="r_test" name="ra_btn" id="ra_btn" value="10"> 10대
-                <input type="radio" class="r_test" name="ra_btn" id="ra_btn" value="20"> 20대
-                <input type="radio" class="r_test" name="ra_btn" id="ra_btn" value="30"> 30대
+                <span class="input_style">Radio Button</span><br>
+                <input type="radio" name="ra_btn" value="10" /> 10대
+                <input type="radio" name="ra_btn" value="20" /> 20대
+                <input type="radio" name="ra_btn" value="30" /> 30대
                 <br><br>
                 <!--checkboxbutton-->
-                <span class="input_style">checkbox</span><br>
-                <input type="checkbox" class="r_test" id="chk_btn" value="10"> 10대
-                <input type="checkbox" class="r_test" id="chk_btn" value="20"> 20대
-                <input type="checkbox" class="r_test" id="chk_btn" value="30"> 30대
+                <span class="input_style">Check Box</span><br>
+                <input type="checkbox" class="chk_btn" name="chk_btn" value="10" onclick="doOpenCheck(this);" /> 10대
+                <input type="checkbox" class="chk_btn" name="chk_btn" value="20" onclick="doOpenCheck(this);" /> 20대
+                <input type="checkbox" class="chk_btn" name="chk_btn" value="30" onclick="doOpenCheck(this);" /> 30대
                 <br><br>
                 <!--editbox-->
-                <span class="input_style">editbox</span><br>
-                <input type="text" class="r_test" id="ex_edit" style="width:80%;" placeholder="숫자를 입력해주세요">
+                <span class="input_style">Edit Box</span><br>
+                <input type="text" id="ex_edit" placeholder="숫자를 입력해주세요"
+                       onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
                 <br><br>
                 <!--range-->
-                <span class="input_style">range</span><br>
+                <span class="input_style">Range</span><br>
                 <div>
-                    <label style="color: #005cbf; font-size: 30px; font-style: italic"> Value : </label>
-                    <span id="value1" style="color: #005cbf; font-size: 30px; font-style: italic"></span>
+                    <label id="range_value_label"> Value : </label>
+                    <span id="range_value"></span>
                     <br>
-                    <font size="2" id="slider_value_view">0</font>
-                    <input type="range" class="r_test" value="0" min="0" max="1000" step="5" id="range_num"
-                           style="width:80%;"
-                           oninput="document.getElementById('value1').innerHTML=this.value;">
-                    <font size="2" id="slider_value_view">1000</font>
+                    <font id="slider_value_view">0</font>
+                    <input type="range" value="0" min="0" max="1000" step="5" id="range_num"
+                           oninput="document.getElementById('range_value').innerHTML=this.value;" />
+                    <font id="slider_value_view">1000</font>
                 </div>
             </form>
-
         </div>
     </div>
     <!--div class="row">
@@ -872,11 +871,20 @@
 <!--alert css-->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!--pdf-->
-<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script type="text/javascript">
 
+    // checkbox 하나만 선택하기
+    function doOpenCheck(chk){
+        var obj = document.getElementsByName("chk_btn");
+        for(var i=0; i<obj.length; i++){
+            if(obj[i] != chk){
+                obj[i].checked = false;
+            }
+        }
+    }
+
     $(document).ready(function () {
+
         // 리스트페이지에서 id 값을 누르면 나오는 상세페이지
         // select 한 결과를 상세페이지에 넘기기
         // index.js에서 받아온 id값
@@ -922,8 +930,13 @@
                     $('input:radio[id="filling"]:input[value=' + a[0].filling + "]").attr("checked", true);
                     $('input:radio[id="weathering_degree"]:input[value=' + a[0].weathering_degree + "]").attr("checked", true);
                     $('input:radio[id="underground_water"]:input[value=' + a[0].underground_water + "]").attr("checked", true);
+                    $('input:radio[name="ra_btn"]:input[value=' + a[0].ra_btn + "]").attr("checked", true);
+                    $('input:checkbox[name="chk_btn"]:input[value=' + a[0].chk_btn + "]").attr("checked", true);
+                    $('#ex_edit').attr('value', a[0].ex_edit);
+                    $('#range_num').attr('value', a[0].range_num);
+                    $("#range_value").text(a[0].range_num);
 
-                    // 체크된 라디오 버튼은 비활성화
+                    /*// 체크된 라디오 버튼은 비활성화
                     $('input:radio[id="strength"]:input[value=' + a[0].strength + "]:checked").attr("disabled", false);
                     $('input:radio[id="coefficient"]:input[value=' + a[0].coefficient + "]:checked").attr("disabled", false);
                     $('input:radio[id="joint_spacing"]:input[value=' + a[0].joint_spacing + "]:checked").attr("disabled", false);
@@ -932,7 +945,7 @@
                     $('input:radio[id="asperity"]:input[value=' + a[0].asperity + "]:checked").attr("disabled", false);
                     $('input:radio[id="filling"]:input[value=' + a[0].filling + "]:checked").attr("disabled", false);
                     $('input:radio[id="weathering_degree"]:input[value=' + a[0].weathering_degree + "]:checked").attr("disabled", false);
-                    $('input:radio[id="underground_water"]:input[value=' + a[0].underground_water + "]:checked").attr("disabled", false);
+                    $('input:radio[id="underground_water"]:input[value=' + a[0].underground_water + "]:checked").attr("disabled", false);*/
 
                     // 라디오 버튼 클릭 시 css 변경
                     $("input:checked").parent("td").css("background-color", "#dff0d8");
@@ -995,51 +1008,54 @@
         // 라디오 버튼 클릭 시
         $("input").click(function () {
 
-            // r_test 입력 시 모든 항목을 체크해주세요가 발생하는 것을 방지
-            var cls = $(this).attr("class");
-            if (cls != "r_test") {
-                // 라디오 버튼을 입력 하지 않을 시 css 초기화
-                $("input").parent("td").css("background-color", "");
-                $("input").parent("td").css("font-weight", "");
+            // 라디오 버튼을 입력 하지 않을 시 css 초기화
+            $("input").parent("td").css("background-color", "");
+            $("input").parent("td").css("font-weight", "");
 
-                // 라디오 버튼 클릭 시 css 변경
-                $("input:checked").parent("td").css("background-color", "#dff0d8");
-                $("input:checked").parent("td").css("font-weight", "bold");
+            // 라디오 버튼 클릭 시 css 변경
+            $("input:checked").parent("td").css("background-color", "#dff0d8");
+            $("input:checked").parent("td").css("font-weight", "bold");
 
-                // 라디오 버튼 클릭 시 값 가져와 연산
-                var strength = Number($("input:radio[id='strength']:checked").val());
-                var coefficient = Number($("input:radio[id='coefficient']:checked").val());
-                var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
-                var joint_length = Number($("input:radio[id='joint_length']:checked").val());
-                var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
-                var asperity = Number($("input:radio[id='asperity']:checked").val());
-                var filling = Number($("input:radio[id='filling']:checked").val());
-                var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
-                var underground_water = Number($("input:radio[id='underground_water']:checked").val());
+            // 라디오 버튼 클릭 시 값 가져와 연산
+            var strength = Number($("input:radio[id='strength']:checked").val());
+            var coefficient = Number($("input:radio[id='coefficient']:checked").val());
+            var joint_spacing = Number($("input:radio[id='joint_spacing']:checked").val());
+            var joint_length = Number($("input:radio[id='joint_length']:checked").val());
+            var joint_gap = Number($("input:radio[id='joint_gap']:checked").val());
+            var asperity = Number($("input:radio[id='asperity']:checked").val());
+            var filling = Number($("input:radio[id='filling']:checked").val());
+            var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
+            var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-                // 총점 계산
-                let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
+            // 총점 계산
+            let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
 
-                // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
-                if (isNaN(sum)) {
-                    // sum의 값이 숫자가 아니면 true 반환
-                    $("#sum").text("모든 항목을 체크해주세요");
+            // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
+            if (isNaN(sum)) {
+                // sum의 값이 숫자가 아니면 true 반환
+                $("#sum").text("모든 항목을 체크해주세요");
 
-                    // 항목을 전부 체크 시 값 가져와 연산하기 (총점)
-                } else {
-                    // sum의 값이 숫자이면 false 반환
-                    $("#sum").text(sum);
-                }
+                // 항목을 전부 체크 시 값 가져와 연산하기 (총점)
+            } else {
+                // sum의 값이 숫자이면 false 반환
+                $("#sum").text(sum);
             }
         });
 
         // 수정 버튼 클릭 시
         $("#btn_update").click(function () {
+
             // 리스트페이지에서 id 값을 누르면 나오는 상세페이지
             // 상세페이지에서 select한 값을 라디오버튼에 찍히게 하려면?
             // select 한 결과의 id를 숫자로 변환
             var result = "<%= id %>";
             result = Number(result);
+
+            // 체크된 항목의 값을 가져와라
+            var ra_btn = Number($("input:radio[name='ra_btn']:checked").val());
+            var chk_btn = Number($("input:checkbox[name='chk_btn']:checked").val());
+            var ex_edit = Number($('#ex_edit').val());
+            var range_num = Number($('#range_num').val());
 
             // 라디오 버튼 클릭 시 값
             var strength = Number($("input:radio[id='strength']:checked").val());
@@ -1064,6 +1080,10 @@
                 weathering_degree: weathering_degree,
                 underground_water: underground_water,
                 id: result,
+                ra_btn: ra_btn,
+                chk_btn: chk_btn,
+                ex_edit: ex_edit,
+                range_num: range_num
             };
 
             // JSON 객체를 String 객체로 변환
@@ -1078,6 +1098,7 @@
                 data: jsonData,
                 contentType: "application/json",
                 success: function (data) {
+                    console.log("data" + jsonData);
                     Swal.fire("수정 완료!", "수정이 완료되었습니다!", "success");
                 },
                 error: function (err) {
@@ -1105,11 +1126,10 @@
         $("#btn_save").click(function () {
 
             // 체크된 항목의 값을 가져와라
-            var ra_btn = Number($("input:radio[id='ra_btn']:checked").val());
-            var chk_btn = Number($("input:checkbox[id='chk_btn']:checked").val());
+            var ra_btn = Number($("input:radio[name='ra_btn']:checked").val());
+            var chk_btn = Number($("input:checkbox[name='chk_btn']:checked").val());
             var ex_edit = Number($('#ex_edit').val());
             var range_num = Number($('#range_num').val());
-
 
             // 라디오 버튼 클릭 시 값 가져와 연산
             var strength = Number($("input:radio[id='strength']:checked").val());
@@ -1122,16 +1142,13 @@
             var weathering_degree = Number($("input:radio[id='weathering_degree']:checked").val());
             var underground_water = Number($("input:radio[id='underground_water']:checked").val());
 
-            let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water+ra_btn+chk_btn+ex_edit+range_num;
+            // 총점 계산
+            let sum = strength + coefficient + joint_spacing + joint_length + joint_gap + asperity + filling + weathering_degree + underground_water;
 
             // 항목을 전부 체크 하지 않을 시 text 내용 보여주기
             if (isNaN(sum)) {
                 // sum의 값이 숫자가 아니면 true 반환
                 swal("에러!", "모든 항목을 체크해주세요!", "error");
-
-                if(isNaN(ex_edit)){
-                    swal("에러!","숫자만 입력해주세요!","error");
-                }
 
                 // 체크하지 않은 항목의 테두리를 색상으로 알려줌
                 if (isNaN(strength)) {
@@ -1192,14 +1209,14 @@
                     range_num: range_num
                 };
 
+                // JSON 객체를 String 객체로 변환
+                // value 데이터 타입이 string일 경우, 그 값 자체가 string
+                // value 데이터 타입이 배열일 경우, 그 배열 자체가 string
                 var jsonData = JSON.stringify(rmr);
-
-                console.log(jsonData);
-                // console.log(jsonData);
 
                 // 비동기통신으로 데이터 주고받기
                 $.ajax({
-                    url: "/insert",
+                    url: "/insert", // insert.js
                     type: "post",
                     data: jsonData,
                     contentType: "application/json",
@@ -1220,38 +1237,22 @@
             $(".modal-body").empty();
 
             // 체크된 항목의 값을 가져와라
-            var ra_btn = Number($("input:radio[id='ra_btn']:checked").val());
-            var chk_btn = Number($("input:checkbox[id='chk_btn']:checked").val());
+            var ra_btn = Number($("input:radio[name='ra_btn']:checked").val());
+            var chk_btn = Number($("input:checkbox[name='chk_btn']:checked").val());
             var ex_edit = Number($('#ex_edit').val());
             var range_num = Number($('#range_num').val());
 
-            $.ajax({
-                url: "/insert",
-                type: "post",
-                data: jsonData,
-                contentType: "application/json",
-                success: function (data) {
-                    console.log(data);
-                    Swal.fire("저장 완료!", "저장이 완료되었습니다!", "success");
-                },
-                error: function (err) {
-                    Swal.fire("저장 실패!", "저장이 되지 않았습니다!", "error");
-                },
-            });
             // 모달 창에 값을 띄워주기
-            if (ra_btn != undefined && chk_btn != undefined && ex_edit != undefined && range_num != undefined) {
-                $(".modal-body").append("<h4>" + "라디오버튼의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:radio[id='ra_btn']:checked").val() + "대" + "</h2>" + "<br>");
-                $(".modal-body").append("<h4>" + "체크박스의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:checkbox[id='chk_btn']:checked").val() + "대" + "</h2>" + "<br>");
+            if (ra_btn != undefined && chk_btn != undefined && ex_edit != 0 && range_num != 0) {
+                $(".modal-body").append("<h4>" + "라디오버튼의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:radio[name='ra_btn']:checked").val() + "대" + "</h2>" + "<br>");
+                $(".modal-body").append("<h4>" + "체크박스의 값은?" + "</<h4>" + "<br>" + "<h2>" + $("input:checkbox[name='chk_btn']:checked").val() + "대" + "</h2>" + "<br>");
                 $(".modal-body").append("<h4>" + "에디터박스의 값은?" + "</<h4>" + "<br>" + "<h2>" + ex_edit + "</h2>" + "<br>");
                 $(".modal-body").append("<h4>" + "range의 값은?" + "</<h4>" + "<br>" + "<h2>" + range_num + "</h2>");
-
                 // 체크된 값이 없다면?
-                } else {
+            } else {
                 $(".modal-body").append(`<h4>모든 항목을 체크해주세요!</h4>`);
             }
         });
-
-
     });
 </script>
 </html>

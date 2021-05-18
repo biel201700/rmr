@@ -31,5 +31,15 @@ background-color: rgb(153,153,255);
     font-weight: bolder;
     font-style: italic;
     font-size: 35px;
-
+}
+#ex_edit{
+    width:70%;
+}
+#range_value, #slider_value_view, #range_value_label{
+    color: #005cbf;
+    font-size: 30px;
+    font-style: italic
+}
+#range_num{
+    width:60%;
 }

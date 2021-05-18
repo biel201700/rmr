@@ -12,15 +12,13 @@ router.post('/', function (req, res, next) {
 
     // 리스트페이지
     if (Object.keys(id).length===0 && JSON.stringify(id) === JSON.stringify({})) {
-        console.log("1");
         sql = 'SELECT * FROM RMR ORDER BY id DESC';
     }
     // 상세페이지
     if (Object.keys(id).length != 0 || JSON.stringify(id) != JSON.stringify({})){
-        console.log("2");
         sql = `SELECT * FROM RMR WHERE id = ${id.id} ORDER BY id DESC`;
     }
-    // console.log(sql);
+    console.log(sql);
 
     // json으로 받아온 객체와 mysql과 연결 
     var conn = mysql.createConnection({
@@ -34,7 +32,7 @@ router.post('/', function (req, res, next) {
     conn.connect();
 
     conn.query(sql, function (err, results, fields) {
-
+console.log(results);
         if (results) {
             // 리스트페이지
             if (Object.keys(id).length===0 && JSON.stringify(id) === JSON.stringify({})) {

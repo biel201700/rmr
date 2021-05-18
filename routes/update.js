@@ -9,7 +9,6 @@ router.post('/', function(req, res, next) {
 
 // json으로 받아온 객체와 mysql과 연결 
 var json = req.body;
-console.log(json);
 	var conn = mysql.createConnection({
 		host : 'database-1.cn7wv1vrdpnl.ap-northeast-2.rds.amazonaws.com',
 		user : 'biel',
@@ -23,7 +22,8 @@ console.log(json);
     // update query
 	var sql = `UPDATE RMR SET strength = ${json.strength}, coefficient = ${json.coefficient}, joint_spacing = ${json.joint_spacing}, 
 		joint_length = ${json.joint_length},joint_gap = ${json.joint_gap}, asperity = ${json.asperity}, filling = ${json.filling}, 
-		weathering_degree =  ${json.weathering_degree}, underground_water = ${json.underground_water} WHERE id = ${json.id}`;
+		weathering_degree =  ${json.weathering_degree}, underground_water = ${json.underground_water}, ra_btn = ${json.ra_btn}, 
+		chk_btn = ${json.chk_btn}, ex_edit = ${json.ex_edit}, range_num = ${json.range_num}  WHERE id = ${json.id}`;
 
 	conn.query(sql, function(err, results, fields){
 
