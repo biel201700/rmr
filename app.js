@@ -15,6 +15,7 @@ var updateRouter = require('./routes/update');
 var selectRouter = require('./routes/select');
 var listRouter = require('./routes/list');
 
+
 // path
 var path = require('path');
 
@@ -33,13 +34,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/node_modules', express.static(path.join(__dirname + '/node_modules')));
 
-// rmr.js에서 요청이 오면 이 라우터를 호출한다고 명시 
+// rmr.ejs에서 요청이 오면 이 라우터를 호출한다고 명시
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/insert', insertRouter);
 app.use('/update', updateRouter);
 app.use('/select', selectRouter);
 app.use('/list', listRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

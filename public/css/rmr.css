@@ -43,3 +43,7 @@ background-color: rgb(153,153,255);
 #range_num{
     width:60%;
 }
+#btn_pdf{
+    margin-right: 10px;
+    float: right;
+}

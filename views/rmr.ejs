@@ -34,7 +34,8 @@
     <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">-->
 </head>
 <body>
-<!--modal-->
+<div id="pdf_wrap">
+    <!--modal-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -67,6 +68,7 @@
         <button class="mb-1 btn btn-primary" id="btn_select">목록</button>
         <button class="mb-1 btn btn-danger" id="btn_save">저장</button>
         <button class="mb-1 btn btn-warning" id="btn_update">수정</button>
+        <button class="mb-1 btn btn-success" id="btn_pdf">PDF Create</button>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" id="modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
             TEST MODAL
@@ -447,6 +449,7 @@
             </form>
         </div>
     </div>
+</div>
     <!--div class="row">
 < !-- START dashboard main content-- >
 <div class="table-responsive">
@@ -871,6 +874,9 @@
 <!--alert css-->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!--pdf 생성-->
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script type="text/javascript">
 
     // checkbox 하나만 선택하기
@@ -1252,6 +1258,29 @@
             } else {
                 $(".modal-body").append(`<h4>모든 항목을 체크해주세요!</h4>`);
             }
+        });
+
+        // pdf 버튼 클릭 시(이미지화 하여 pdf파일 생성)
+        $('#btn_pdf').click(function (){
+            html2canvas($('#pdf_wrap')[0]).then(function(canvas) {
+                var imgWidth = 210;
+                var pageHeight = imgWidth * 1414;
+                var imgHeight = canvas.height * imgWidth / canvas.width;
+                var heightLeft = imgHeight;
+                var doc = new jsPDF('p', 'mm'); //jspdf객체 생성
+                var position = 0;
+                var imgData = canvas.toDataURL('image/png'); //캔버스를 이미지로 변환
+                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight); //이미지를 기반으로 pdf생성
+                heightLeft -= pageHeight;
+
+                while (heightLeft >= 50){
+                    position = heightLeft - imgHeight;
+                    doc.addPage();
+                    doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                doc.save('sample-file.pdf'); //pdf저장
+            });
         });
     });
 </script>
