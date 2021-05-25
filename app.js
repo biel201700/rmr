@@ -33,8 +33,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/node_modules', express.static(path.join(__dirname + '/node_modules')));
-
 // rmr.ejs에서 요청이 오면 이 라우터를 호출한다고 명시
+app.use('/static', express.static('public'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/insert', insertRouter);
