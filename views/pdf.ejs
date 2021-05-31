@@ -1,57 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <script src="https://github.com/devongovett/pdfkit/releases/download/v0.10.0/pdfkit.standalone.js"></script>
-    <script src="https://github.com/devongovett/blob-stream/releases/download/v0.1.3/blob-stream.js"></script>
+    <meta charset="utf-8"/>
+    <!--Biel favicon 설정-->
+    <link rel="shortcut icon" href="/images/favicon.ico"/>
+    <!--pdfkit 설정-->
+    <!--    <script src="https://github.com/devongovett/pdfkit/releases/download/v0.10.0/pdfkit.standalone.js"></script>-->
+    <!--    <script src="https://github.com/devongovett/blob-stream/releases/download/v0.1.3/blob-stream.js"></script>-->
+    <!--jspdf 설정-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://unpkg.com/jspdf-autotable"></script>
 </head>
 
 <body>
-<div>PDF Output <button id="pdf">Download</button></div>
+<div>PDF Output
+    <button id="pdf">Download</button>
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 </body>
 
 <script type="text/javascript">
 
-    $("#pdf").click(function() {
-        location.href="/pdf.do";
+    // pdf 버튼 클릭 시
+    $("#pdf").click(function () {
+
+        // location.href="/pdf.do";
+        const col = [];
+        const row = [];
+        // 한글과 영어의 혼합
+        col.push({title: '가A', dataKey: 'c1'});
+        col.push({title: '나B', dataKey: 'c2'});
+        col.push({title: '다C', dataKey: 'c3'});
+        col.push({title: '라D', dataKey: 'c4'});
+
+        row.push({id: 1, c1: '안녕하세요', c2: 'ShiftKey', c3: '입니다.', c4: '잘부탁드립니다.'});
+        row.push({id: 2, c1: '간츠', c2: '나루토', c3: '둘리', c4: '레이브'});
+        row.push({id: 3, c1: '거위', c2: '노루', c3: '두루미', c4: '라이언'});
+
+        var doc = new jsPDF("p", "mm", "a4");
+
+        // var xml = new XMLHttpRequest();
+        // const myFont = xml.open("GET", "/public/font/gothic.js", true);
+        //       doc.addFileToVFS("MyFont.ttf", myFont);
+        //       doc.addFont("MyFont.ttf", "MyFont", "normal");
+        //       doc.setFont("MyFont");
+
+        doc.line(15, 19, 195, 19); // 선그리기(시작x, 시작y, 종료x, 종료y)
+        doc.text(15, 40, '안녕하세요'); // 글씨입력(시작x, 시작y, 내용)
+
+        doc.autoTable({
+            theme: 'grid',
+            styles: {
+                font: 'malgun',
+                fontStyle: 'normal'
+            },
+            headerStyles: {
+                fontSize: 15,
+                font: 'malgun',
+                fontStyle: 'normal'
+            }
+        });
+
+        doc.setProperties({
+            title: 'PDF타이틀',
+        });
+
+        doc.save('web.pdf');  //결과 출력
+
     });
-    // // pdf 생성
-    // const doc = new PDFDocument();
-    //
-    //
-    // // pipe the document to a blob
-    // const stream = doc.pipe(blobStream());
-    //
-    // // add your content to the document here, as usual
-    // // doc.setEncoding('utf-8')
-    // doc.font('Times-Roman');
-    // console.log(doc);
-    // doc.fontSize(25).text("안녕하세요", 50, 30);
-    //
-    //
-    // // get a blob when you're done
-    // doc.end();
 
-    /*  const a = document.createElement("a");
-      document.body.appendChild(a);
-      a.style = "display: none";
-
-      function download() {
-          if (!blob) return;
-          var url = window.URL.createObjectURL(blob);
-          a.href = url;
-          a.download = 'test.pdf';
-          a.click();
-          window.URL.revokeObjectURL(url);
-      }
-
-      stream.on("finish", function() {
-          // get a blob you can do whatever you like with
-          blob = stream.toBlob("application/pdf");
-
-      });
-  */
 </script>
 </html>
 
